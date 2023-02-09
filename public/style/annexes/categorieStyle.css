@@ -1,0 +1,115 @@
+.vitrine {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 60vh;
+    border-bottom: 1px solid #f5deb382;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.vitrine h1 {
+    color: var(--vert);
+    transition: color 300ms;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.vitrine:hover h1 {
+    color: var(--blanc);
+    transition: color 300ms;
+}
+
+.vitrine h1:hover {
+    color: var(--rouge);
+    transition: color 300ms;
+}
+
+.CatProduits p {
+    text-align: center;
+    max-width: 800px;
+    margin: auto;
+    font-weight: 300;
+    font-size: 22px;
+}
+
+.produitCat-ul {
+    padding: 0;
+    margin: 70px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 60px;
+    column-gap: 30px;
+}
+
+.produitCat-li {
+    flex: 0 0 21%;
+    background: antiquewhite;
+    border-radius: 8px;
+}
+
+.produitCat-li-img {
+    width: 100%;
+    height: 200px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.produitCat-li-info {
+    margin: 10px;
+    position: relative;
+}
+
+.produitCat-li-info h5 {
+    max-width: 70%;
+}
+
+.produitCat-li-info .prod-panier-box {
+    position: absolute;
+    right: 5px;
+    top: 15px;
+    text-align: center;
+}
+
+.produitCat-li-info .prod-panier-box .cat-prod-ajouter-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.produitCat-li-info .prod-panier-box .Panier-icon {
+    width: 30px;
+}
+
+.produitCat-li-info .prod-panier-box .Panier-icon:active {
+    transform: scale(0.9);
+}
+
+.cat-prod-plus-moins {
+    display: none;
+}
+
+.produitCat-li-info .prod-panier-box .quantity {
+    font-weight: bold;
+    margin: 10px;
+}
+
+.produitCat-li-info .cat-marque-box .marque {
+    text-transform: uppercase;
+    max-width: 70%;
+    /* not working*/
+    overflow: hidden;
+}
+
+.produitCat-li-info div .prixPoidsVolume {
+    max-width: 70%;
+}
+
+.produitCat-li-info .prixBox {
+    text-align: right;
+    margin-right: 20px;
+}

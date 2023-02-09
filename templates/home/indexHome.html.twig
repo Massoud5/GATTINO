@@ -1,0 +1,137 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{parent()}}
+    <link rel="stylesheet" href="{{ asset('style/home.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        <section class="accueil" style="background-image:url('{{ asset('img/photos/accueil/accueil.jpg')}}');">
+            <h1>Bienvenue chez GATTINO</h1> 
+        </section>
+
+        <section class="info-btns"> 
+
+            <a class="btn" href="{{ path('show_infoCommande')}}">
+                <h3>ASSORTIMENTS CADEAUX</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing.
+                </p>
+            </a>
+
+            <a class="btn" href="{{ path('show_1j1p')}}">
+                <h3>1J1P</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing.
+                </p>
+            </a>
+
+            <a class="btn" href="https://www.google.com/maps/place/Gattino/@48.6058305,7.7485987,20z/data=!4m12!1m6!3m5!1s0x4796c9ae16f1e75b:0x1a27b06cada1c70!2sGattino!8m2!3d48.605832!4d7.7486405!3m4!1s0x4796c9ae16f1e75b:0x1a27b06cada1c70!8m2!3d48.605832!4d7.7486405" target="_blank">
+                <h3>HORAIRES</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing.
+                </p>
+            </a>
+           
+        </section>
+        
+        <section class="services" data-services> 
+
+            <h2>Services proposés</h2>
+
+            <div class="carousel" data-carousel>
+
+                <ul class="services-subtitles" data-subtitles>
+                    {% for index,service in services %}
+                        <li class="subtitle" {% if (index == 0) %} data-active {% endif %}{% if service.nom == 'plateaux' %}id="subtitle-plateaux"{% endif %}>{{service.titre}}</li>
+                    {% endfor %}
+                </ul>
+
+                <button class="carousel-btn prev" data-carousel-button="prev">
+                    <img class="left-icon" src="{{ asset('img/icons/left-icon.png')}}" alt="left icon">
+                </button>
+                <button class="carousel-btn next" data-carousel-button="next">
+                    <img class="right-icon" src="{{ asset('img/icons/right-icon.png')}}" alt="right icon">
+                </button>
+
+                <ul class="slide-box" data-slides>
+                    {# l'index est pour pouvoir afficher le premier élément au début  #}
+                    {% for index,service in services %}
+                        <li class="slide" {% if (index == 0) %} data-active {% endif %} {% if service.nom == 'plateaux' %}id="slide-plateaux"{% endif %}>
+                            <img class="service-slide-img" src="{{ asset(service.imgService)}}" alt="{{service.titre}} image">
+                        </li>     
+                    {% endfor %}
+                </ul>
+
+            </div> 
+            <div class="details-services">
+
+                <ul class="paragraphes" data-paragraphes>
+                    {% for index,service in services %}
+                        <p class="paragraphe" {% if (index == 0) %} data-active {% endif %}{% if service.nom == 'plateaux' %}id="paragraphe-plateaux"{% endif %}>{{ service.description}}
+                            <em>{% if service.commandabilite %}Produits commandables{% else %}Produits non-commandables{% endif %}</em>
+                        </p>
+                        
+                        
+                    {% endfor %}
+                </ul>
+
+                <ul class="services-produits-lists" data-produits>
+                    {% for index,service in services %}
+                        <ul class="service-produits" {% if (index == 0) %} data-active {% endif %}{% if service.nom == 'plateaux' %}id="produits-plateaux"{% endif %}>
+                            {% for produit in service.produits %}
+                                {% if produit.active == true %}
+                                    {% if produit.commandable == true %}
+                                        <a href="{{path('show_produit', {'id':produit.id}) }}" class="service-li">
+                                            <img class="service-item-img" src="{{ asset(produit.imgProduit)}}" alt="photo de {{produit.titre}}">
+                                            <div class="service-item-info">
+                                                <h5>{{ produit.titre }}</h5>
+                                                <span>{{ produit.prixUnitaire | number_format(2, ',', '')}} €{% if produit.service.nom == 'plateaux'  %}<small>/personne</small>{% endif %}</span>
+                                            </div>
+                                        </a>  
+                                    {% else %}
+                                        <li class="service-li">
+                                            <img class="service-item-img" src="{{ asset(produit.imgProduit)}}" alt="photo {{produit.titre}}">
+                                            <div class="service-item-info">
+                                                <h5>{{ produit.titre }}</h5>
+                                                <span>{{ produit.prixUnitaire | number_format(2, ',', '')}} €</span>
+                                            </div>
+                                        </li>  
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    {% endfor %}
+                </ul>
+
+                <hr>
+            </div>
+        </section>
+
+        <section class="categories">
+            <h2>Nos catégories</h2>
+            <ul class="categories-list">
+                {% for categorie in categories %}
+                    <li class="categorie">
+                        <a href="{{ path('show_categorie', {'id': categorie.id}) }}">
+                            <h4>{{ categorie.titre }}</h4>
+                            <img class="categorie-img" src="{{ categorie.catImg }}" alt="Image de {{ categorie.titre }}">
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <button onclick="goToTop()" id="go-to-top" title="retourner au début"><img class="up-icon" src="{{ asset('img/icons/arrow-up.png')}}" alt="flèche haut"></button>
+
+    </div>
+
+
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script src="{{ asset('js/home/home.js') }}"></script>
+{% endblock %}

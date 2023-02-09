@@ -1,0 +1,66 @@
+@import './navbar/navbar.css';
+@import './navbar/responsiveNavbar.css';
+@import './annexes.css';
+@import './footer/footer.css';
+@import './footer/footerResponsive.css';
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Assistant, sans-serif;
+}
+
+:root{
+
+    /* COULEUR */
+
+    --vert: #009246;
+    --blanc: #F1F2F1;
+    --rouge: #CE2B37;
+}
+
+body{
+    background: var(--blanc);
+    min-height: 100vh;
+}
+
+
+
+.container{
+    display: inline;
+    padding: 0;
+    margin: auto 0;
+    position: relative;
+}
+
+h1{
+    font-weight: bold; 
+    font-size: 60px;
+    text-transform: uppercase;
+}
+
+a{
+    text-decoration: none;
+    color: unset;
+}
+a:hover{
+    color: unset;
+}
+
+li{
+    list-style-type: none;
+}
+
+button{
+    all: unset;
+}
+
+h2{
+    margin-left: 10%;
+    font-weight: 300;
+    font-size: 55px;
+    text-transform: uppercase;
+}

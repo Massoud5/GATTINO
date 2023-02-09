@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% block navBar %}{% endblock %}
+
+    <h1 style="text-align:center;">GATTINO</h1>
+
+    <section class="success-paiement facture-section">
+        <div>
+            <h3>Facture N°: {{commande.nCommandePaid}}</h3>
+            <span><strong>Commandé le:</strong> {{ commande.dateCommande | date("d/m/Y") }}</span>
+        </div>
+
+        <strong>Client:</strong>
+        <ul>
+            {% if commande.client.raisonSociale is defined %}
+                <li>
+                    <b>Raison sociale:</b> {{ commande.client.raisonSociale }}
+                </li>
+            {% endif %}
+            <li>
+                <b>Nom:</b> {{ commande.client.prenom }} {{ commande.client.nom }}
+            </li>
+            <li>
+                <b>Email:</b> {{ commande.client.email }}
+            </li>
+            <li>
+                <b>Tel:</b> {{ commande.client.tel }}
+            </li>
+            {% if commande.client.raisonSociale is defined %}
+                <li>
+                    <b>Adresse:</b> {{ commande.client.adresse }} <br>
+                    {{ commande.client.cp }} {{ commande.client.ville }}
+                </li>
+            {% endif %}
+        </ul>
+
+        <p>
+            {% if commande.dateRetrait is not null %}
+                <b>Retrait produits:</b> {{ commande.dateRetrait | date("d/m/Y")}} {{ commande.tempsRetrait }}<br>
+            {% endif %}
+            {% if commande.dateRetraitPA is not null %}
+                <b>Retrait plateaux/assortiments cadeaux:</b> {{ commande.dateRetraitPA | date("d/m/Y") }} {{ commande.tempsRetraitPA }}
+            {% endif %}
+        </p>
+
+        <table class="table table-hover table-products" style="margin:auto;margin-top:70px;">
+            <thead>
+                <tr>
+                <th>Produit</th>
+                <th>Quantité</th>
+                <th>Prix</th>
+                <th>TVA</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for item in commande.commandeProduits %}
+                    
+                    <tr>
+                    <td>{{ item.produit }}</td>
+                    <td>{{ item.quantite }}</td> 
+                    <td>{{ (item.produit.prixUnitaire * item.quantite) | number_format(2, ',', '')}} €</td> 
+                    <td>{% if (item.produit.taxe * 100) matches '/^\\d+$/' %}{{ (item.produit.taxe * 100) }}{% else %}{{ (item.produit.taxe * 100) | number_format(2, ',', '')}}{% endif %}% </td> 
+                    </tr>
+
+                {% endfor %}
+                <table class="table table-striped table-total" style="padding-left:70%;padding-top:40px;">
+                    </tbody>
+                        <tr>
+                            <th>HT</th>
+                            <td>{{commande.ht}} €</td>
+                        </tr>
+                        <tr>
+                            <th>TVA</th>
+                            <td>{{commande.tva}} €</td>
+                        </tr>
+                        <tr>
+                            <th>Total</th>
+                            <td>{{commande.ttc | number_format(2, ',', '')}} €</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </tbody>
+        </table>
+    </section>
+    
+
+    <style>
+
+        td{
+            margin: 0 10px;
+        }
+
+        footer{
+            display: none;
+        }
+    </style> 
+{% endblock %}
+

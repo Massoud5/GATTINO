@@ -1,0 +1,13 @@
+@media (max-width: 900px) {
+    .footerList{
+        flex-direction: column;
+    }
+    footer ul li{
+        width: max-content;
+        margin: 0 auto;
+        margin-bottom: 50px;
+    }
+    footer ul li p{
+        text-align: left;
+    } 
+}

@@ -1,0 +1,208 @@
+@import './nav-produits-hover.css';
+@import './nav-prods-hov-responsive.css';
+/* navbar.css */
+.header{
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    box-shadow: 0 0 0 1px  #f5deb382;
+}
+.admin-home-links{
+    background: white;
+    text-align: center;
+    height: 25px;
+    margin: 0;
+}
+.header-box{
+    height: 90px;
+    display: flex;
+    width: 100%;
+}
+
+.logo-box{
+    background-color: #000000b3;
+    height: 100%;
+    width: 250px;
+    z-index: 100;
+}
+
+.logo-gattino{
+    width: 100%;
+    height: 100%;
+}
+
+.nav-box{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #a3a3a3b3;
+    width: 100%;
+    height: 100%;
+    border-left: 1px solid #f5deb382;
+    z-index: 99;
+}
+
+.nav-icon{
+    border-radius: 3px;
+    transform: scale(1);
+    transition: transform 200ms;
+    padding: 5px;
+}
+.nav-icon:hover{
+    transform: scale(.9);
+    transition: transform 200ms;
+    cursor:pointer;
+}
+
+.nav-el{
+    position: relative;
+    height: 100%;
+}
+.nav-item{
+    position: relative;
+    top: 30%;
+    color: var(--blanc);
+    box-shadow: inset 0 0 0 0 transparent;
+    transition: color 300ms;
+    transition: box-shadow 300ms;
+    padding: 5px;
+    font-size: 20px;
+}
+.nav-item:hover{
+    color: var(--vert);
+    box-shadow: inset 0 0 10px 20px var(--blanc);
+    transition: all 300ms;
+    border-radius: 2px;
+}
+
+.Produits_nav_box{
+    position: relative;
+    top: 30%;
+    cursor: default;
+    text-align: center;
+}
+.produit_nav_el{
+    display: inline;
+    color:var(--blanc);
+    font-size: 20px;
+}
+
+.arrow-nav{
+    width: 15px;
+    transform: rotate(0deg);
+    transition: transform 300ms;
+}
+.produits-nav:hover .arrow-nav{
+    transform: rotate(180deg);
+    transition: transform 300ms;
+}
+
+.produit-line-nav,
+.actualites-line-nav,
+.notre-histroire-line-nav,
+.contact-line-nav{
+    width: 0%;
+    height: 4px;
+    background: var(--rouge);
+    border-radius: 2px;
+    position: absolute;
+    bottom: 0;
+    transition: width 300ms ease;
+}
+.produits-nav:hover .produit-line-nav,
+.actualites-nav:hover .actualites-line-nav,
+.notre-histoire-nav:hover .notre-histroire-line-nav,
+.contact-nav:hover .contact-line-nav{
+    width: 100%;
+    transition: width 300ms ease;
+}
+
+.search-icon{
+    width: 25px;
+}
+
+.panier-general-navbar-box > .panier-icon{
+    width: 35px;
+}
+.panier-general-navbar-box >.panier-quantity{
+    background: antiquewhite;
+    height: 25px;
+    padding: 0 3px;
+    border-radius: 3px;
+    text-align: center;
+    font-weight: bold;
+    border: none;
+}
+
+/* SEARCH BAR */
+.search-bar-box{
+    background: #d5d4d4e7;
+    height: fit-content;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    position: relative;
+    z-index: 200;
+    width: 100%;
+}
+.close-search-box{
+    width: 30px;
+    position: absolute;
+    right: 20px;
+    top: 25px;
+    box-shadow: gray 0px 0px 20px 1px;
+    background: gray;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.search-form-box .search-elements{
+    display: flex;
+    justify-content: center;
+    height: 40px;
+}
+.search-bar-box .search-input{
+    width: 500px;
+    height: 100%;
+    margin: auto;
+    border-radius: 3px 0 0 3px;
+    margin-right: 4px;
+}
+.search-bar-box .admin-green-btn{
+    height: 32px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.search-results-box{
+    margin-top: 30px;
+}
+
+.search-results-box h3{
+    margin-left: 15%;
+}
+
+.result-produits-list{
+    display: flex;
+    flex-wrap: wrap;
+    width:50%;
+    margin: auto;
+    margin-top: 40px;
+}
+.result-produits-list > .item-li{
+    margin: 5px auto;
+    display: flex;
+    border-radius: 8px;
+    width: 400px;
+    height: 70px;
+    background-color: antiquewhite;
+    transition: box-shadow 300ms;
+}
+.result-produits-list > .item-li:hover{
+    box-shadow: 0 0 15px 1px black;
+    transition: box-shadow 300ms;
+}
+.result-produits-list > .item-li img {
+    width: 100px;
+    height: 100%;
+    border-radius: 8px 0 0 8px;
+}

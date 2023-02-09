@@ -1,0 +1,8 @@
+@import './admin/adminMainStyle.css';
+@import './annexes/loginStyle.css';
+@import './annexes/pdfStyle.css';
+@import './annexes/stripeStyle.css';
+@import './annexes/checkoutStyle.css';
+@import './annexes/categorieStyle.css';
+@import './annexes/produitStyle.css';
+@import './annexes/panierStyle.css';

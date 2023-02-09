@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block body %}
+    {% block navBar %}{% endblock %}
+
+    <div class="admin-container">
+
+        <h1>Administration</h1>
+
+        <p class="binevenue">Bienvenue <strong>{{ app.user.prenom }} {{ app.user.nom }}</strong></p>
+        <div class="mb-3 admin-btns">
+            <a href="{{ path('app_home') }}">Aller au site</a>
+            <a href="{{ path('app_logout') }}">Se déconnecter</a>
+            <a href="{{ path('app_register') }}">Créer un nouveau admin</a>
+        </div>
+                           
+
+        <section>
+            <nav id="nav-bar">
+                <a class="nav-link first" href="{{ path('app_admin') }}">Commandes</a>
+                <a class="nav-link" href="{{ path('admin_services') }}">Services</a>
+                <a class="nav-link" href="{{ path('admin_categories') }}">Catégories</a>
+                <a class="nav-link" href="{{ path('admin_produits_main') }}">Produits</a>
+                <a class="nav-link" href="{{ path('app_admin_1J1P') }}">1J1P</a>
+                <a class="nav-link" href="{{ path('app_admin_events') }}" data-active>Evénements</a>
+            </nav>
+        </section>
+    </div>
+    <style>
+        footer{
+            display: none;
+        }
+    </style>
+{% endblock %}

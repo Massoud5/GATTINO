@@ -1,0 +1,110 @@
+/* responsivNavBar.css */
+@media (min-width:801px) {
+    .responsive-nav-icon{
+        display: none;
+    }
+}
+@media (max-width: 800px) {
+
+    .header{
+        position: initial;
+    }
+
+    .nav-box{
+        justify-content: flex-end;
+        z-index: 100;
+        background: #a2a2a2f2;
+    }
+    .nav-box > *{
+        display: none;
+    }
+
+    .responsive-nav-icon{
+        display: block;
+        z-index: 150;
+        margin-right: 30px;
+    }
+    .open-nav,
+    .close-nav{
+        display: block;
+        width: 30px;
+        cursor: pointer;
+        transform: scale(1);
+        transition: transform 300ms;
+    }
+    .open-nav:hover,
+    .close-nav:hover{
+        transform: scale(.9);
+        transition: transform 300ms;
+    }
+    .close-nav{
+        display: none;
+        margin-top: 8px;
+    }
+
+    .toggle > .responsive-nav-icon > .open-nav{
+        display:none;
+    }
+    .toggle > .responsive-nav-icon >.close-nav{
+        display:block;
+    }
+
+    .nav-box.toggle {
+        display: flex;
+        flex-direction: column;
+        height: max-content;
+        padding: 20px 0;
+        border-bottom-left-radius: 5px;
+        position: relative;
+    }
+    .nav-box.toggle > *{
+        display: initial;
+    }
+    .nav-box.toggle > .responsive-nav-icon{
+        align-self: flex-end;
+    }
+    .nav-box.toggle > .search-icon{
+        align-self: flex-start;
+        position: absolute;
+        top: 23px;
+        left: 5%;
+    }
+    .nav-box.toggle > .panier-a{
+        align-self: flex-end;
+        position: absolute;
+        display: block;
+        top: 20px;
+        left: 25%;
+    }
+
+    .nav-box.toggle > .produits-nav{
+        margin-top: 50px;
+        margin-bottom: 7vh;
+    }
+    .nav-box.toggle > .actualites-nav{
+        margin-bottom: 7vh;
+    }
+    .nav-box.toggle > .notre-histoire-nav{
+        margin-bottom: 7vh;
+    }
+    .nav-box.toggle > .contact-nav{
+        margin-bottom: 7vh;
+    }
+
+    .nav-box.toggle > .actualites-nav > .actualites-line-nav,
+    .nav-box.toggle > .notre-histoire-nav > .notre-histroire-line-nav,
+    .nav-box.toggle > .contact-nav > .contact-line-nav{
+        bottom: -5px;
+    }
+
+    .search-bar-box{
+        position: fixed;
+        top: 0;
+    }
+    .search-form-box .search-elements{
+        margin-top:50px;
+    }
+    .search-bar-box .search-input{
+        width:250px;
+    }
+}

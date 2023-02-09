@@ -1,0 +1,148 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block body %}
+    {% block navBar %}{% endblock %}
+
+    <div class="admin-container">
+
+        <h1>Administration</h1>
+
+        <p class="binevenue">Bienvenue <strong>{{ app.user.prenom }} {{ app.user.nom }}</strong></p>
+        <div class="mb-3 admin-btns">
+            <a href="{{ path('app_home') }}">Aller au site</a>
+            <a href="{{ path('app_logout') }}">Se déconnecter</a>
+            <a href="{{ path('app_register') }}">Créer un nouveau admin</a>
+        </div>
+                           
+
+        <section>
+            <nav id="nav-bar">
+                <a class="nav-link first" href="{{ path('app_admin') }}">Commandes</a>
+                <a class="nav-link" href="{{ path('admin_services') }}">Services</a>
+                <a class="nav-link" href="{{ path('admin_categories') }}">Catégories</a>
+                <a class="nav-link" href="{{ path('admin_produits_main') }}" data-active>Produits</a>
+                <a class="nav-link" href="{{ path('app_admin_1J1P') }}">1J1P</a>
+                <a class="nav-link" href="{{ path('app_admin_events') }}">Evénements</a>
+            </nav>
+        </section>
+
+        <section class="admin-produits">
+            
+            <nav id="nav-bar-produits">
+                <div class="mb-3 admin-produits-btns">
+
+                    <div class="btn-group">
+                        <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Services
+                        </button>
+                        <ul class="dropdown-menu">
+                            {% for service in services %}
+                                <li><a class="dropdown-item" href="{{ path('admin_produits_service', {'id': service.id})}}">{{ service.titre }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Catégories
+                        </button>
+                        <ul class="dropdown-menu">
+                            {% for categorie in categories %}
+                                <li><a class="dropdown-item" href="{{ path('admin_produits_categorie', {'id': categorie.id})}}">{{ categorie.titre }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <a href="{{ path('admin_produit_ajouter')}}" class="admin-blue-btn">Ajouter un produit</a>
+                </div>
+            </nav>
+
+            <h2>Tous les Produits</h2>
+
+            <h3>Produits commandables</h3>
+
+            <table class="table table-hover admin-table">
+
+
+                <thead>
+                    <tr>
+                        {# <th scope="col">Q Produit</th> #}
+                        <th scope="col">Référence</th>
+                        <th scope="col">Titre produit</th>
+                        <th scope="col">Marque</th>
+                        <th scope="col">Taxe</th>
+                        <th scope="col">Prix unitaire(TTC)</th>
+                        <th scope="col" colspan="4">Catégorie/Service</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for produit in produitsCommandables | sort((a, b) => a.quantity <=> b.quantity) %}
+                        
+                        <tr>
+                            <td>{% if produit.reference == null %}_{% else %}{{produit.reference}}{% endif %}</td>
+                            <td><div class="admin-produit-ease-out">{{produit.titre}}</div></td>
+                            <td><div class="admin-produit-ease-out">{% if produit.marque == null %}_{% else %}{{produit.marque}}{% endif %}</div></td>
+                            <td>{% if (produit.taxe * 100) matches '/^\\d+$/' %}{{ (produit.taxe * 100) }}{% else %}{{ (produit.taxe * 100) | number_format(2, ',', '')}}{% endif %}%</td>
+                            <td>{{produit.prixUnitaire | number_format(2,',','')}} €</td>
+                            <td><div class="admin-produit-ease-out">{% if produit.categorie == null %}{{produit.service}}{% else %}{{produit.categorie}}{% endif %}</div></td>
+                            <td><a href="{{ path('admin_produit_modify', {'id':produit.id}) }}" class="admin-yellow-btn">Modifier</a></td>
+                            <td><a href="{{ path('admin_produit_delete', {'id':produit.id}) }}" class="admin-red-btn">Supprimer</a></td> 
+                            <td>
+                                <a href="{{ path('admin_produit_inverse', {'id':produit.id}) }}" class={% if produit.active == true %}"admin-green-btn"{% else %}"admin-black-btn"{% endif %}>
+                                    {% if produit.active == true %}Activé{% else %}Désactivé{% endif %}
+                                </a>
+                            </td> 
+                        </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <h3>Produits non commandables</h3>
+
+            <table class="table table-hover admin-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Référence</th>
+                        <th scope="col">Titre produit</th>
+                        <th scope="col">Marque</th>
+                        <th scope="col">Taxe</th>
+                        <th scope="col">Prix unitaire(TTC)</th>
+                        <th scope="col" colspan="4">Catégorie/Service</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for produit in produitsNonCommandables %}
+                        
+                        <tr>
+                            <td>{% if produit.reference == null %}_{% else %}{{produit.reference}}{% endif %}</td>
+                            <td><div class="admin-produit-ease-out">{{produit.titre}}</div></td>
+                            <td><div class="admin-produit-ease-out">{% if produit.marque == null %}_{% else %}{{produit.marque}}{% endif %}</div></td>
+                            <td>{% if (produit.taxe * 100) matches '/^\\d+$/' %}{{ (produit.taxe * 100) }}{% else %}{{ (produit.taxe * 100) | number_format(2, ',', '')}}{% endif %}%</td>
+                            <td>{{produit.prixUnitaire | number_format(2,',','')}} €</td>
+                            <td><div class="admin-produit-ease-out">{% if produit.categorie == null %}{{produit.service}}{% else %}{{produit.categorie}}{% endif %}</div></td>
+                            <td><a href="{{ path('admin_produit_modify', {'id':produit.id}) }}" class="admin-yellow-btn">Modifier</a></td>
+                            <td><a href="{{ path('admin_produit_delete', {'id':produit.id}) }}" class="admin-red-btn">Supprimer</a></td> 
+                            <td>
+                                <a href="{{ path('admin_produit_inverse', {'id':produit.id}) }}" class={% if produit.active == true %}"admin-green-btn"{% else %}"admin-black-btn"{% endif %}>
+                                    {% if produit.active == true %}Activé{% else %}Désactivé{% endif %}
+                                </a>
+                            </td> 
+                        </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+    </div>
+
+    <style>
+        footer{
+            display: none;
+        }
+    </style>
+
+    <script src="{{ asset('js/admin/admin-produits-main.js') }}"></script>
+{% endblock %}

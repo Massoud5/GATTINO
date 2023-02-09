@@ -1,0 +1,36 @@
+/* facture Header */
+
+.pdf-header{
+    position: fixed;
+    height: 100px;
+    width: 100%;
+    /* background-color: #a2a2a2; */
+    background-color: red;
+    border-bottom:1px solid #f5deb382;
+    z-index: 2;
+}
+.pdf-header-nav{
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+.pdf-logo-box{
+    height: 100%;
+    width: 200px;
+    z-index: 100;
+    margin-right: 20px;
+    width: 100%;
+    text-align: center;
+}
+.pdf-logo-gattino{
+    width: auto;
+    height: 100%;
+}
+
+/* facture Section */
+
+.facture-section{
+    padding-top: 120px;
+    max-width: 1000px;
+    margin: auto;
+}

@@ -1,0 +1,35 @@
+@media (max-width: 800px) {
+    .produits-nav:hover .arrow-nav{
+        transform: none !important;
+        transition: none !important;
+    }
+    .produits-nav:focus-within .arrow-nav{
+        transform: rotate(180deg) !important;
+        transition: transform 300ms !important;
+    }
+
+    .liste-type-groupe{
+        top:30px;
+    }
+    .produits-nav:hover .liste-type-groupe{
+        display: none;
+    }
+    .produits-nav:focus-within .liste-type-groupe{
+        display: block;
+    }
+    .nav-services-liste:hover .nav-services-liste-titre,
+    .nav-categories-liste:hover .nav-categories-liste-titre{
+        color: black;
+        background: transparent;
+        cursor: pointer;
+    }
+    /* ------------------- */
+    .nav-services-list-ul,
+    .nav-categories-list-ul{
+        position: initial;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
+    }
+
+}

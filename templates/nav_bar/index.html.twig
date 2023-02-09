@@ -1,0 +1,137 @@
+<header class="header">
+	{% if is_granted('ROLE_ADMIN') %}
+		<p class="admin-home-links">
+			Vous êtes connecté
+			{% if app.user.civilite == 'F' %}e
+			{% endif %}
+			<strong>
+				{{ app.user.prenom }}</strong>
+			<a style="margin-left:20px;color:blue;" href="{{ path('app_logout') }}">Se déconnecter</a>
+			<a style="margin-left:20px;color:blue;" href="{{ path('app_admin') }}">Page admin</a>
+		</p>
+	{% endif %}
+	<div class="header-box">
+		<figure class="logo-box">
+			<a class="home-logo-link" href="{{ path('app_home')}}" tabindex="1"><img class="logo-gattino" src="{{ asset('img/logo/logo-GATTINO.jpg') }}" alt="Logo-Epicerie-Gattino"></a>
+		</figure>
+
+		<nav class="nav-box">
+
+			<div class="responsive-nav-icon">
+				<img class="open-nav" src="{{ asset('img/icons/open-icon.png') }}" alt="open icon">
+				<img class="close-nav" src="{{ asset('img/icons/close-icon.png') }}" alt="close icon">
+			</div>
+
+			<div class="nav-el produits-nav" tabindex="2">
+				<div class="Produits_nav_box">
+					<div class="produit_nav_el">Produits</div>
+					<img src="{{ asset('img/icons/arrowNav-white.png') }}" alt="arrow" class="arrow-nav">
+				</div>
+				<div class="produit-line-nav"></div>
+
+				<ul class="liste-type-groupe">
+					<li class="nav-services-liste" tabindex="20">
+						<div class="nav-services-liste-titre">Services</div>
+						<ul class="nav-services-list-ul">
+							{% for service in services %}
+								{% if service.commandabilite %}
+									<a class="nav-services-item"  {% if service.nom == 'plateaux' %}id="plateaux-nav" onclick="accessToPlateaux()"{% endif %} {% if isHome is not defined %}href="{{ path('app_home') }}"{% endif %}>
+										{{ service.titre }}
+									</a>
+								{% endif %}
+							{% endfor %}
+						</ul>
+					</li>
+					<li class="nav-categories-liste" tabindex="21">
+						<div class="nav-categories-liste-titre">Catégories</div>
+						<ul class="nav-categories-list-ul">
+							{% for categorie in categories %}
+								{% if categorie.commandabilite %}
+									<a class="nav-categories-item" href="{{ path('show_categorie', {'id': categorie.id})}}">
+										{{ categorie.titre }}
+									</a>
+								{% endif %}
+							{% endfor %}
+						</ul>
+					</li>
+				</ul>
+			</div>
+
+			<div class="nav-el actualites-nav">
+				<a class="nav-item" href="{{ path('show_actualites')}}" tabindex="3">Actualités</a>
+				<div class="actualites-line-nav"></div>
+			</div>
+
+			<div class="nav-el notre-histoire-nav">
+				<a class="nav-item" href="{{ path('show_notreHistoire')}}" tabindex="4">Notre histoire</a>
+				<div class="notre-histroire-line-nav"></div>
+			</div>
+
+			<div class="nav-el contact-nav">
+				<a class="nav-item" href="#contact" tabindex="5">Contact</a>
+				<div class="contact-line-nav"></div>
+			</div>
+
+			<div class="search-icon nav-icon" tabindex="6"><img class="search-icon" src="{{ asset('img/icons/search-white.png')}}" alt="Icon search"></div>
+
+			<a class="nav-icon panier-a" href="{{ path('index_panier')}}">
+				<div class="panier-general-navbar-box">
+					<img class="panier-icon" src="{{ asset('img/icons/panier-white.png')}}" alt="Icon panier">
+
+					<span class="panier-quantity">
+						{% if items | length > 0 %}
+							{{ items.data.quantityCart }}{% else %}0
+						{% endif %}
+					</span>
+				</div>
+			</a>
+		</nav>
+	</div>
+	{% if prodsSearched | length > 0 %}
+		<div hidden id="search-bar-display" style="position:absolute;"></div>
+	{% endif %}
+	<div class="search-bar-box">
+		<a><img class="close-search-box" src="{{ asset('img/icons/close-icon.png') }}" alt="close icon"></a>
+		<div class="search-form-box">
+			<div class="search-elements">
+				{# {{ form(searchForm) }} #}
+				{{ form_start(searchForm) }}
+					{{ form_row(searchForm.mots) }}
+					{{ form_row(searchForm.rechercher) }}
+				{{ form_end(searchForm) }}
+			</div>
+		</div>
+		<div class="search-results-box">
+			<h3>Résultat(s) de recherche: "{{ q }}"</h3>
+
+			{% if prodsSearched | length > 0 %}
+				<ul class="result-produits-list">
+					{% for produit in prodsSearched %}
+						{% if produit.commandable == true %}
+							<a href="{{path('show_produit', {'id':produit.id}) }}" class="item-li">
+								<img class="service-item-img" src="{{ asset(produit.imgProduit)}}" alt="photo {{ produit.titre }}">
+								<div class="service-item-info">
+									<h5>{{ produit.titre }}</h5>
+									<span>{{ produit.prixUnitaire }}
+										€</span>
+								</div>
+							</a>
+						{% else %}
+							<a href="{{path('show_produit', {'id':produit.id}) }}" class="item-li">
+								<img class="service-item-img" src="{{ asset(produit.imgProduit)}}" alt="photo {{ produit.titre }}">
+								<div class="service-item-info">
+									<h5>{{ produit.titre }}</h5>
+									<span>{{ produit.prixUnitaire }}
+										€</span>
+								</div>
+							</a>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			{% else %}
+				<p style="text-align:center;">Rien trouvé!</p>
+			{% endif %}
+
+		</div>
+	</div>
+</header>

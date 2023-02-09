@@ -1,0 +1,199 @@
+.admin-container h1{
+    text-align: center;
+}
+
+.admin-container a {
+    color: blue;
+}
+
+.binevenue{
+    margin-left: 20px;
+}
+
+/* Logout / Sing up */
+.admin-btns{
+    text-align: right;
+    margin-right: 20px;
+    color: blue;
+}
+.admin-btns a{
+    margin-left: 30px;
+}
+
+/* Sidebar */
+
+#nav-bar{
+    position: fixed;
+    top: 180px;
+    left: 0;
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-right: solid black 5px;
+    border-radius: 0 5px 5px 0 ;
+    color: blue;
+}
+.nav-link{
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.nav-link:nth-of-type(1){
+    margin-top: 20px;
+}
+.nav-link:active{
+    transform:scale(.9);
+}
+.nav-link[data-active]{
+    font-weight: bold;
+}
+
+.admin-container h2{
+    font-size: 35px;
+}
+
+.admin-table{
+    max-width: 1000px;
+    margin: 50px auto;
+}
+
+.admin-table .admin-details-commande{
+    display: none;
+}
+.admin-table .admin-td-commande:hover .admin-details-commande{
+    display: block;
+}
+
+
+.admin-produit-ease-out{
+    overflow: hidden;
+    max-height: 20px;
+    transition: max-height 1000ms ease-out;
+    max-width: 120px;
+}
+.admin-produit-ease-out:hover{
+    max-height: fit-content;
+    transition: max-height 1000ms ease-in;
+}
+
+.admin-green-btn{
+    color: var(--blanc) !important;
+    background-color: var(--vert);
+    padding: 3px;
+    border-radius: 3px;
+}
+.admin-red-btn{
+    color: var(--blanc) !important;
+    background-color: var(--rouge);
+    padding: 3px;
+    border-radius: 3px;
+}
+.admin-blue-btn{
+    color: var(--blanc) !important;
+    background-color: #006aff;
+    padding: 3px;
+    border-radius: 3px;
+}
+.admin-yellow-btn{
+    color: black !important;
+    background-color: #ffd900;
+    padding: 3px;
+    border-radius: 3px;
+}
+.admin-black-btn{
+    color: var(--blanc) !important;
+    background-color: black;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+.admin-btn-ajouter{
+    display: block;
+    width: fit-content;
+    margin: auto;
+}
+
+/* ADMIN FORM STYLE */
+.admin-form-style{
+    width: 900px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.admin-form-style h2{
+    margin: 0;
+    text-align: center;
+}
+.admin-form-style label{
+    margin-top: 20px;
+}
+
+/* ADMIN PRODUITS */
+#nav-bar-produits{
+    display: flex;
+    justify-content: center;
+}
+
+.admin-produits-btns div {
+    display: inline;
+}
+
+.admin-produit-link{
+    margin-right: 10px;
+    color: black !important;
+    background: rgba(161, 160, 160, 0.415);
+    padding: 3px;
+    border-radius: 3px;
+}
+.admin-produit-link:hover{
+    color: white !important;
+    background: black;
+}
+.admin-produit-link[data-active]{
+    background: black;
+}
+
+.admin-produits h2{
+    margin-bottom: 50px;
+}
+.admin-produits h3{
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 300px;
+}
+.prod-quant-form{
+    display: flex;
+}
+.prod-quant-form input{
+    width: 42px;
+    text-align: center;
+    font-weight: bold;
+    border: none;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.prod-quant-form button{
+    color: var(--blanc) !important;
+    background-color: #006aff;
+    padding: 0 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+/* Dropdown */
+.admin-produits-btns .btn-group .btn{
+    margin-right: 20px;
+}
+.admin-produits-btns .btn-group[data-active] .btn{
+    border-top: 1px solid black;
+}
+
+/* ADMIN PRODUITS FORM */
+.produit-form-section .admin-form-style{
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+}

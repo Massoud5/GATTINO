@@ -1,0 +1,239 @@
+{% extends 'base.html.twig' %}
+
+{% block scriptStripe %}
+    <script src="https://js.stripe.com/v3/"></script>
+{% endblock %}
+
+{% block body %}
+    {% block navBar %}
+        <header class="cart-header">
+            <nav class="cart-header-nav">
+                    <a class="back-icon-box" href="{{ path('app_home')}}">
+                        <img class="back-icon" src=" {{ asset('img/icons/home-white.png') }}" alt="Icon home">
+                    </a>            
+                <figure class="cart-logo-box">
+                    <img class="cart-logo-gattino" src="{{ asset('img/logo/logo-GATTINO.jpg') }}" alt="Logo Epicerie Gattino">
+                </figure>
+            </nav>
+        </header>
+    {% endblock %}
+
+    <section class="shopping-steps">
+        <nav class="cart-nav">
+            <ul class="cart-nav-ul">
+                <li class="cart-nav-li">Panier({% if items | length > 0 %}{{ items.data.quantityCart }}{% else %}0{% endif %})</li> 
+                <span>&#8640;</span>
+                <li class="cart-nav-li" {% if isSubmitted == false %}data-active{% endif %}>Formulaire</li>
+                <span>&#8640;</span>
+                <li class="cart-nav-li" {% if isSubmitted == true %}data-active{% endif %}>Paiement</li>
+                <span>&#8640;</span>
+                <li class="cart-nav-li">Facture</li>
+            </ul>
+        </nav>
+    </section>
+        <hr>
+
+    {% if items | length > 0 %}
+        <section class="checkout-container">
+
+            <div class="row">
+                <div class="col-md-4 order-md-2 mb-4">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">Votre panier</span>
+                    </h4>
+                    <ul class="list-group mb-3 sticky-top">
+                        {% for item in items.produits %}
+                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <div>
+                                    <h6 class="my-0">{{ item.produit }} &nbsp;{% if item.quantity > 1 %}<I>x{{ item.quantity }}</I>{% endif %}</h6>
+                                    <small class="text-muted">{{item.produit.marque}}</small>
+                                </div>
+                                <span class="text-muted">{{ (item.produit.prixUnitaire * item.quantity) | number_format(2, ',', '')}} €</span>
+                            </li>
+                        {% endfor %} 
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <span>HT</span>
+                                <span>{{ items.data.totalHT }} € </span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>TVA</span>
+                                <span>{{ items.data.totalTaxe }} €</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>Total (TTC)</span>
+                                <strong>{{ items.data.totalTTC | number_format(2, ',', '')}} € </strong>
+                            </div>
+                        </li>
+                        {% if isSubmitted == false %}
+                            <a class="retour-panier" id="retourne" href="{{ path('index_panier')}}">
+                                Retourner au Panier
+                            </a>
+                        {% endif %}
+                    </ul>
+                </div>
+                {# ---------------------------------------------------------------------------------------------------- #}
+                <div class="col-md-8 order-md-1 relative-position">
+                    {% if isSubmitted == false %}
+                        
+                        <h4 class="mb-3">Formulaire de Commande</h4>
+                        {{ form_start(formAddClient)}}
+
+                            <div class="radio-civilite">
+                                <span>Civilité*</span>
+                                <div class="radio-option-civilite">
+                                    <input id="madame" name="civilite" type="radio" class="custom-control-input" value="F">
+                                    <label class="custom-control-label" for="madame">Madame</label> 
+                                </div>
+                                <div class="radio-option-civilite">
+                                    <input id="monsieur" name="civilite" type="radio" class="custom-control-input" value="H" checked>
+                                    <label class="custom-control-label" for="monsieur">Monsieur</label> 
+                                </div>
+                            </div>
+                            <p id="civilite-error" style="color:red;display:none;"></p>
+                            {% if civiliteError == true %}<p id="civilite-error" style="color:red;">Veuillez cocher une civilité</p>{% endif %}
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3 error-message">
+                                    {{ form_row(formAddClient.prenom)}}
+                                    {# <div class="invalid-feedback"> Entrez un prénom valid. </div> #}
+                                </div>
+                                <div class="col-md-6 mb-3 error-message">
+                                    {{ form_row(formAddClient.nom)}}
+                                    {# <div class="invalid-feedback"> Entrez un nom valid. </div> #}
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3 error-message">
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3 error-message">
+                                    {{ form_row(formAddClient.email)}}
+                                    {# <div class="invalid-feedback"> Entrez une adresse mail valid. </div> #}
+                                </div>
+                                <div class="col-md-6 mb-3 error-message">
+                                    {{ form_row(formAddClient.tel)}}
+                                    {# <div class="invalid-feedback"> Téléphone est demandé. </div> #}
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3 error-message">  
+                                {{ form_row(formAddClient.raisonSociale)}}
+                                {# <div class="invalid-feedback"> Entrez une adresse mail valid. </div> #}
+                            </div>
+                            
+                            <div class="mb-3 error-message">
+                                {{ form_row(formAddClient.adresse)}}
+                                {# <div class="invalid-feedback"> Entrez votre adresse. </div> #}
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3 error-message">
+                                    {{ form_row(formAddClient.cp)}}
+                                    {# <div class="invalid-feedback"> Code postal est demandé. </div> #}
+                                </div>
+                                <div class="col-md-6 mb-3 error-message">
+                                    {{ form_row(formAddClient.ville)}}
+                                    {# <div class="invalid-feedback"> Nom de ville est demandé. </div> #}
+                                </div>
+                            </div>
+
+                            <hr>
+                            {% if catExists == true %}
+                                {% if servExists == true %}
+                                <h3>Produits</h3>
+                                {% endif %}
+                                <div class="row">
+                                    <div class="col-md-6 mb-3 error-message">
+                                        {{ form_row(formAddClient.dateRetrait)}}
+                                        <div id="checkout-dateRetrait-erreur" style="color:red;display:none"></div>
+                                    </div>
+                                    <div class="col-md-6 mb-3 error-message">
+                                            {{ form_row(formAddClient.tempsRetrait)}}
+                                    </div>
+                                </div>
+
+                                <p id="message-commande" style="display:none"><img src="{{asset('img/icons/attention-icon.png')}}" alt="attention-icon" class="attention-icon"> Vous pouvez récupérer la commande minimum 2h après la validation de votre commande.</p>
+                                {% endif %}
+                            
+                            {% if servExists == true %}
+                                {% if catExists == true %}
+                                <h3>Plateau et/ou Assortiment cadeau</h3>
+                                {% endif %}
+                                <div class="row">
+                                    <div class="col-md-6 mb-3 error-message">
+                                        {# <label for="dateRetraitPA">Date de retrait</label>
+                                        <input type="date" id="dateRetraitPA" name="dateRetraitPA" class="form-control" required></input>  #}
+                                        {{ form_row(formAddClient.dateRetraitPA)}}
+                                        <div id="checkout-dateRetraitPA-erreur" style="color:red;display:none"></div>
+                                    </div>
+                                        <div class="col-md-6 mb-3 error-message">
+                                        {{ form_row(formAddClient.tempsRetraitPA)}}
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            <p class="checkout-attention-text"><img src="{{asset('img/icons/attention-icon.png')}}" alt="attention-icon" class="attention-icon"> Veuillez consulter nos <a href="https://www.google.com/maps/place/Gattino/@48.6058373,7.7464399,17z/data=!3m1!4b1!4m5!3m4!1s0x4796c9ae16f1e75b:0x1a27b06cada1c70!8m2!3d48.605832!4d7.7486405" target="_blank" class="horaires-link">horaires d'ouverture</a> avant de vous rendre à la boutique.</p>
+                            <p class="checkout-attention-text"><img src="{{asset('img/icons/attention-icon.png')}}" alt="attention-icon" class="attention-icon"> Si vous choisissez l'après-midi, vous pouvez vous rendre à la boutique à partir de <strong>14h</strong>.</p>
+
+                            <hr>
+
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="same-address" required checked>
+                                <label class="custom-control-label" for="same-address">J'ai lu et j'accepte la <a class="conditions-link" href="#" target="_blank">politique de confidentialité</a>.</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="save-info" required checked>
+                                <label class="custom-control-label" for="save-info">J'ai lu et j'accepte les <a class="conditions-link" href="#" target="_blank">conditions générales de vente</a></label> 
+                            </div>
+                        {{ form_end(formAddClient)}}
+
+                    {% else %}
+                        <div class="card">
+                            <p id="paiement-message">
+                                En cliquant sur le bouton ci-dessous vous allez être dirigé vers la page de paiement.
+                            </p>
+                            <button id="submit-paiement-btn" type="button" onclick="checkoutStripe()">PROCÉDER AU PAIEMENT</button>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+
+    <script src="{{ asset('js/checkout/feries.js') }}"></script>
+    <script src="{{ asset('js/checkout/checkout.js') }}"></script>
+
+    <script type="text/javascript">
+    
+        let stripe = Stripe('pk_test_vkeFCPUvyumqMwdG1EZlKwnM');
+
+        function checkoutStripe(){
+            fetch('/create-checkout-session/{{ clientId }}', {
+                method: "POST"
+            })
+
+            .then(function(response){
+                return response.json();
+            })
+
+            .then(function(session){
+                return stripe.redirectToCheckout({ sessionId: session.id });
+            })
+
+            .then(function(result){
+                if (result.error) {
+                    alert(result.error.message);
+                }
+            })
+            .catch(function(error){
+                console.log('Error: ' + error.message);
+            })
+        }
+
+    </script>
+{% endblock %}

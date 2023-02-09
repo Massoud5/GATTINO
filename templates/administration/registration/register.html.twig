@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    {% block navBar %}{% endblock %}
+
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+    
+    <section class="vh-100 bg-image registeration"
+    style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');margin:auto;">
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="container h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                        <div class="card" style="border-radius: 15px;">
+                            <div class="card-body p-5">
+                                <h2 class="text-uppercase text-center mb-5">Créer un compte admin</h2>
+
+                                {{ form_start(registrationForm) }}
+
+                                    <div class="radio-civilite">
+                                        <span>Civilité*</span>
+                                        <div class="radio-option-civilite">
+                                            <input id="madame" name="civilite" type="radio" class="custom-control-input" value="F" required>
+                                            <label class="custom-control-label" for="madame">Madame</label> 
+                                        </div>
+                                        <div class="radio-option-civilite">
+                                            <input id="monsieur" name="civilite" type="radio" class="custom-control-input" value="H" required>
+                                            <label class="custom-control-label" for="monsieur">Monsieur</label> 
+                                        </div>
+                                    </div>
+                                    <p id="civilite-error" style="color:red;display:none;"></p>
+                                    {% if civiliteError == true %}<p id="civilite-error" style="color:red;">Veuillez cocher une civilité</p>{% endif %}
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3 error-message-register">
+                                            {{ form_row(registrationForm.prenom)}}
+                                        </div>
+                                    
+                                        <div class="col-md-6 mb-3 error-message-register">
+                                            {{ form_row(registrationForm.nom)}}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-outline mb-3 error-message-register">
+                                        {{ form_row(registrationForm.email) }}
+                                    </div>
+
+                                    <div class="form-outline mb-3 error-message-register">
+                                        {{ form_row(registrationForm.tel) }}
+                                    </div>
+
+                                    <div class="form-outline mb-3 error-message-register">
+                                        {{ form_row(registrationForm.plainPassword, { label: 'Password'}) }}{# <input type="password" id="form3Example4cg" class="form-control form-control-lg" /> #}
+                                    </div>
+
+                                {{ form_end(registrationForm) }}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .error-message-register ul li{ 
+            color: red;
+        }
+
+            
+
+        .gradient-custom-3 {
+        /* fallback for old browsers */
+        background: #84fab0;
+
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
+        }
+        .gradient-custom-4 {
+        /* fallback for old browsers */
+        background: #84fab0;
+
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+        }
+
+        footer{
+            display: none;
+        }
+    </style>
+{% endblock %}

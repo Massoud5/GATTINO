@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProduitController!{% endblock %}
+
+{% block body %}
+
+    <div class="container produit-page">
+
+        {% if produit.active == true %}
+
+            <section class="prod-box">
+                <div class="vitrine-prod">
+                    <div class="vitrine-img-info">
+                        <figure class="vitrine-img-box">
+                            <img class="vitrine-prod-img" src="{{ asset(produit.imgProduit) }}" alt="Image de Produit">
+                        </figure>
+                        <div class="vitrine-prod-info">
+
+                            <h1>{{ produit.titre }}</h1>
+
+                            <div class="vitrine-marque-box">
+                                <strong class="vitrine-marque">{{ produit.marque }}</strong>
+                            </div>
+                            <div class="vitrine-prix-box">
+                                <strong class="vitrine-prix">{{ produit.prixUnitaire | number_format(2, ',', '')}} € {% if produit.service is not null and produit.service.nom == 'plateaux'  %}<small>/personne</small>{% endif %}<small>({{ (produit.prixUnitaire * (1 - produit.taxe)) | number_format(2, ',', '')}} € HT | {{ produit.taxe * 100 }}% TVA)</small></strong>
+                            </div>
+                            {% if produit.categorie is not null %}                         
+                                <div>
+                                    <span class="vitrine-poids-volume">{{ produit.poidsVolumeUnitaire }} {% if produit.uniteMesure == 1 %}g{% else %}ml{% endif %} ( {{ produit.prixAuKiloLitre}} € / {% if produit.uniteMesure == 1 %}kg{% else %}L{% endif %})</span>
+                                </div>
+                            {% endif %}
+                                
+                                <div class="ajouter-panier-box">
+                                    {% if produit.commandable == true %}
+                                        <a class="ajouter-btn" href="{{ path('panier_ajouterP', {'produit': produit.id}) }}"><button type="button" class="btn btn-success">Ajouter au panier</button></a>
+                                        <div class="vitrine-plus-moins">
+                                            <a href="{{ path('panier_reduireP', {'produit': produit.id}) }}">
+                                                <img class="vitrine-panier-icon" src="{{ asset('img/icons/panier-moins.png') }}" alt="icône ajouter">
+                                            </a>
+                                            <span class="vitrine-quantity">{{ quantity }}</span>
+                                            <a href="{{ path('panier_ajouterP', {'produit': produit.id}) }}">
+                                                <img class="vitrine-panier-icon" src="{{ asset('img/icons/panier-plus.png') }}" alt="icône ajouter">
+                                            </a>
+                                        </div>
+                                        <small class="vitrine-produit-commande-info">Contacter le vendeur pour plus de 12 quantités.</small>
+                                    {% else %}
+                                        <p>Ce produit n'est pas commandable en ligne</p>
+                                    {% endif %}
+                                </div>
+                        </div>
+                    </div>
+
+                    <p class="prod-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque congue ac felis eget dignissim. Maecenas eget nunc in purus euismod aliquam. Nullam in metus elit. Nullam sed ligula id lectus laoreet vehicula nec consequat dui. Aliquam laoreet rhoncus libero, a ullamcorper ante cursus ultricies. Nullam sagittis ut lorem at blandit. Etiam ac sapien pharetra dolor faucibus placerat. In hac habitasse platea dictumst. Nulla bibendum dignissim risus, ac auctor erat pharetra vitae.
+                        In tincidunt orci ut lacus ultrices, in laoreet ligula feugiat. Aenean id dui ut enim lacinia luctus. Integer gravida finibus mauris nec vehicula. Cras quis nibh pretium, porta tortor a, aliquet nisl. Nulla ac libero porta, euismod odio nec, imperdiet risus. Duis a lacus diam. Etiam malesuada pharetra dolor, eget tempus magna volutpat ut. Vestibulum risus libero, suscipit id massa ac, varius fringilla lacus. Mauris ut tortor in nulla condimentum lobortis ut vel diam. Nulla est ante, interdum sed justo dignissim, volutpat sollicitudin mauris.
+                    </p>
+                </div>
+            
+            </section>
+        {% else %}
+            <p style="height:62vh;padding-top:300px;text-align:center;">Le produit n'est pas disponible</p>
+        {% endif %}
+    </div>
+
+    <script>
+        const addBtn = document.querySelector('.ajouter-btn')   
+        const plusMinusBtn = document.querySelector('.vitrine-plus-moins')   
+        {% if quantity > 0 %}
+            addBtn.style.display = 'none';
+            plusMinusBtn.style.display = 'block';    
+        {% else %}
+            addBtn.style.display = 'block';
+            plusMinusBtn.style.display = 'none';
+        {% endif %}
+
+        const prodComInfo = document.querySelector('.vitrine-produit-commande-info')
+        {% if quantity == 12 %}
+            prodComInfo.style.display = 'block';  
+        {% else %}
+            prodComInfo.style.display = 'none';
+        {% endif %}
+    </script>
+    
+{% endblock %}

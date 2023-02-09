@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produit{% endblock %}
+
+{% block body %}
+    {% block navBar %}{% endblock %}
+
+    <section class="produit-form-section">
+        <div class="admin-form-style">
+            <h2>Ajouter un produit</h2>
+            <div class="form-control">
+                <div class="row">
+                    <div class="mb-3">
+                        {{ form_start(formAddProduit) }}
+                            {{ form_row(formAddProduit.nomProduit)}}
+                            {{ form_row(formAddProduit.titre)}}
+                            {{ form_row(formAddProduit.marque)}}
+                            {{ form_row(formAddProduit.reference)}}
+                            {{ form_row(formAddProduit.image)}}
+                            <div class="row" style="margin-top:40px">
+                                <p style="position:absolute;color:red;" id="cat-serv-p-form">Choisissez une catégorie ou un service* <span style="color:orange;background:gray;padding:0 3px;border-radius:5px">ni les deux ni aucun</span></p>
+                                <div class="col-md-6 mb-3" style="margin-top:20px">
+                                    {{ form_row(formAddProduit.categorie)}}
+                                </div>
+                                <div class="col-md-6 mb-3" style="margin-top:20px">
+                                    {{ form_row(formAddProduit.service)}}
+                                </div>
+                            </div>
+                            {{ form_row(formAddProduit.uniteMesure)}}
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    {{ form_row(formAddProduit.poidsVolumeUnitaire)}}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    {{ form_row(formAddProduit.prixAuKiloLitre)}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    {{ form_row(formAddProduit.prixUnitaire)}}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    {{ form_row(formAddProduit.taxe)}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    {{ form_row(formAddProduit.produitAlcoolique)}}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    {{ form_row(formAddProduit.commandable)}}
+                                </div>
+                            </div>
+                            {{ form_row(formAddProduit.description)}}
+                        {{ form_end(formAddProduit) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        footer{
+            display: none;
+        }
+    </style>
+        
+    <script src="{{ asset('js/admin/admin-produits-form.js') }}"></script>
+{% endblock %}

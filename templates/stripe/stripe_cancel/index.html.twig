@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement Annulé!{% endblock %}
+
+{% block body %}
+    <section class="cancel-stripe">
+        <h2>Echéc de paiement!</h2>
+
+        <div class="cancel-paiement-box">
+            <div class="all-center">
+                <p>Garder le panier et le modifier</p>
+                <a class="cancel-paiement-link btn btn-dark" href="{{ path('app_modify_shopping') }}">Aller à l'accueil</a>
+            </div>
+            <div  class="all-center">
+                <p>Tout effacer</p>
+                <a class="cancel-paiement-link btn btn-danger" href="{{ path('app_cancel_shopping') }}">Annuler l'achat</a>
+            </div>
+        </div>
+
+    </section>
+
+    <style>
+        footer{
+            display:none;
+        }
+    </style>
+{% endblock %}

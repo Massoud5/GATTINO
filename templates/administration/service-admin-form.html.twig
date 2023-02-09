@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Service{% endblock %}
+
+{% block body %}
+    {% block navBar %}{% endblock %}
+
+    <section class="service-form-section">
+        <div class="admin-form-style">
+            <h2>Ajouter un service</h2>
+            <div class="form-control">
+                <div class="row">
+                    <div class="mb-3">
+                        {{ form(formAddService) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <style>
+        footer{
+            display: none;
+        }
+    </style>
+    <script type="text/javascript">
+        const nomServ = document.getElementById('service_form_nom');
+        const imgServ = document.getElementById('service_form_image');
+
+        if(!nomServ.value){
+            imgServ.setAttribute('required', 'true');
+        }
+    </script>
+{% endblock %}

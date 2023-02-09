@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block body %}
+    {% block navBar %}{% endblock %}
+
+    <div class="admin-container">
+
+        <h1>Administration</h1>
+
+        <p class="binevenue">Bienvenue <strong>{{ app.user.prenom }} {{ app.user.nom }}</strong></p>
+        <div class="mb-3 admin-btns">
+            <a href="{{ path('app_home') }}">Aller au site</a>
+            <a href="{{ path('app_logout') }}">Se déconnecter</a>
+            <a href="{{ path('app_register') }}">Créer un nouveau admin</a>
+        </div>
+
+        <section>
+            <nav id="nav-bar">
+                <a class="nav-link first" href="{{ path('app_admin') }}">Commandes</a>
+                <a class="nav-link" href="{{ path('admin_services') }}" data-active>Services</a>
+                <a class="nav-link" href="{{ path('admin_categories') }}">Catégories</a>
+                <a class="nav-link" href="{{ path('admin_produits_main') }}">Produits</a>
+                <a class="nav-link" href="{{ path('app_admin_1J1P') }}">1J1P</a>
+                <a class="nav-link" href="{{ path('app_admin_events') }}">Evénements</a>
+            </nav>
+        </section>
+
+        <section class="admin-services">
+            <h2>Services</h2>
+
+            <table class="table table-hover admin-table">
+
+                <a href="{{ path('admin_services_ajouter')}}" class="admin-blue-btn admin-btn-ajouter">Ajouter un service</a>
+
+                <thead>
+                    <tr>
+                        <th scope="col">Titre Service</th>
+                        <th scope="col">Q produits</th>
+                        <th scope="col">Commandabilité</th>
+                        <th scope="col" colspan="2"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for service in services %}
+                        
+                        <tr>
+                            <td>{{service.titre}}</td>
+                            <td>{{service.produits | length}}</td>
+                            <td>{% if service.commandabilite == false %}Non{% else %}Oui{% endif %}</td> 
+                            <td><a href="{{ path('admin_service_modify', {'id':service.id}) }}" class="admin-yellow-btn">Modifier</a></td>
+                            <td><a href="{{ path('admin_service_delete', {'id':service.id}) }}" class="admin-red-btn">Supprimer</a></td>
+                        </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+    </div>
+
+    <style>
+        footer{
+            display: none;
+        }
+    </style>
+{% endblock %}

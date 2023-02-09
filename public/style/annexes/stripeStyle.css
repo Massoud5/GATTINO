@@ -1,0 +1,76 @@
+/* SUCCESS PAIEMENT */
+.success-stripe h2 {
+    font-size: 40px;
+}
+
+.success-stripe .stripe-facture-box{
+    position: absolute;
+    top: 200px;
+    right: 10%;
+}
+
+.success-stripe .table-products {
+    max-width: 1000px;
+    margin: 100px auto 0 auto;
+}
+
+.success-stripe .table-total{
+    width: 200px;
+    margin: 40px auto 30px auto;
+}
+.success-paistripeement .table-total td{
+    font-weight: bold;
+    text-align: right;
+}
+
+.facture-input{
+    opacity: 0;
+}
+#facturePdfBtn{
+    margin: auto;
+    margin-bottom: 100px;
+    display: block;
+    background: transparent;
+    border: none;
+    color: black;
+}
+#facturePdfBtn:hover{
+    font-weight: bold;
+}
+.pdf-icon{
+    width: 30px;
+}
+
+/* CANCEL PAIEMENT */
+
+.cancel-stripe h2{
+    color:red;
+    text-align:center;
+    margin:0;
+    margin-top: 10%;
+}
+
+.cancel-paiement-box{
+    background-color: white;
+    border-radius: 8px;
+    width: 50%;
+    height: 200px;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.all-center{
+    text-align: center;
+}
+
+.cancel-paiement-link{
+    font-size: 20px;
+}
+.cancel-paiement-link:nth-child(1){
+    height: 44px;
+}

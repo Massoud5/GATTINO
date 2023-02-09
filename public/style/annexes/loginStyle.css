@@ -1,0 +1,42 @@
+
+.login {
+    width: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    overflow: hidden;
+}
+
+/* .toast-body{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+} */
+
+.login h1 {
+    text-align: center;
+    padding-bottom: 40px;
+    padding-top: 20px;
+}
+
+.error-message-login ul li{ 
+    color: red;
+}
+
+.login-btn{
+    margin: auto;
+    margin-top: 40px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.login .grecaptcha-badge{
+    left: 26.84rem !important;
+    transition: left 500ms !important;
+}
+.login .grecaptcha-badge:hover{
+    left: 240px !important;
+    transition: left 500ms !important;
+}

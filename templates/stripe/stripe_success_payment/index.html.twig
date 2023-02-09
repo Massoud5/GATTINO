@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block scriptStripe %}
+    <script src="https://js.stripe.com/v3/"></script>
+{% endblock %}
+
+{% block body %}
+    {% block navBar %}
+        <header class="cart-header">
+            <nav class="cart-header-nav">
+                    <a class="back-icon-box" href="{{ path('app_home')}}">
+                        <img class="back-icon" src=" {{ asset('img/icons/home-white.png') }}" alt="Icon home">
+                    </a>            
+                <figure class="cart-logo-box">
+                    <img class="cart-logo-gattino" src="{{ asset('img/logo/logo-GATTINO.jpg') }}" alt="Logo Epicerie Gattino">
+                </figure>
+            </nav>
+        </header>
+    {% endblock %}
+
+    <section class="shopping-steps">
+        <nav class="cart-nav">
+            <ul class="cart-nav-ul">
+                <li class="cart-nav-li">Panier({% if items | length > 0 %}{{ items.data.quantityCart }}{% else %}0{% endif %})</li> {# {% for item in items %}{% if item.quantity < 1 %}0{% else %}{{ item.quantity }}{% endif %}{% endfor %} #}
+                <span>&#8640;</span>
+                <li class="cart-nav-li">Formulaire</li>
+                <span>&#8640;</span>
+                <li class="cart-nav-li">Paiement</li>
+                <span>&#8640;</span>
+                <li class="cart-nav-li" data-active>Facture</li>
+            </ul>
+        </nav>
+    </section>
+    <hr>
+    <p style="text-align:center;color:green;">Paiement effectué avec succès.</p>
+    <section class="success-stripe">
+
+        <h2>Votre commande :</h2>
+
+        <div class="stripe-facture-box">
+            <form method="post">
+                <label for="facturePdf"></label>
+                <input type="radio" class="facture-input" name="facturePdf" value="facturePdf" checked>
+                <button type="submit" id="facturePdfBtn" name="factureSubmit" class="btn btn-success"><img class="pdf-icon" src="{{ asset('img/icons/pdf-icon.png') }}" alt="facture.pdf"> Télécharger la facture</button>
+            </form>
+        </div>
+
+        <table class="table table-hover table-products">
+            <thead>
+                <tr>
+                <th scope="col">Produit</th>
+                <th scope="col">Quantité</th>
+                <th scope="col">Prix</th>
+                <th scope="col">TVA</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for item in commande.commandeProduits %}
+                    
+                    <tr>
+                    <td>{{ item.produit }}</td>
+                    <td>{{ item.quantite }}</td> 
+                    <td>{{ (item.produit.prixUnitaire * item.quantite) | number_format(2, ',', '')}} €</td> 
+                    <td>{% if (item.produit.taxe * 100) matches '/^\\d+$/' %}{{ (item.produit.taxe * 100) }}{% else %}{{ (item.produit.taxe * 100) | number_format(2, ',', '')}}{% endif %}% </td> 
+                    </tr>
+
+                {% endfor %}
+                <table class="table table-striped table-total">
+                    </tbody>
+                        <tr>
+                            <th>HT</th>
+                            <td>{{commande.ht}} €</td>
+                        </tr>
+                        <tr>
+                            <th>TVA</th>
+                            <td>{{commande.tva}} €</td>
+                        </tr>
+                        <tr>
+                            <th>Total</th>
+                            <td>{{commande.ttc | number_format(2, ',', '')}} €</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </tbody>
+        </table>
+
+        
+    </section>
+
+{% endblock %}
+
+

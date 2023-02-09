@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+    {% block navBar %}
+        <header class="cart-header">
+            <nav class="cart-header-nav">
+                    <a class="back-icon-box" href="{{ path('app_home')}}">
+                        <img class="back-icon" src=" {{ asset('img/icons/home-white.png') }}" alt="Icon home">
+                    </a>            
+                <figure class="cart-logo-box">
+                    <img class="cart-logo-gattino" src="{{ asset('img/logo/logo-GATTINO.jpg') }}" alt="Logo Epicerie Gattino">
+                </figure>
+            </nav>
+        </header>
+    {% endblock %}
+
+    <section class="shopping-steps">
+        <nav class="cart-nav">
+            <ul class="cart-nav-ul">
+                <li class="cart-nav-li" data-active>Panier({% if items | length > 0 %}{{ items.data.quantityCart }}{% else %}0{% endif %})</li> {# {% for item in items %}{% if item.quantity < 1 %}0{% else %}{{ item.quantity }}{% endif %}{% endfor %} #}
+                <span>&#8640;</span>
+                <li class="cart-nav-li">Formulaire</li>
+                <span>&#8640;</span>
+                <li class="cart-nav-li">Paiement</li>
+                <span>&#8640;</span>
+                <li class="cart-nav-li">Facture</li>
+            </ul>
+        </nav>
+    </section>
+        <hr>
+    <section>
+        {% if items | length > 0 %}
+
+            <div class="cart-els-box">
+                <a class="cart-commande-btn" href="{{ path('app_checkout') }}">Commander</a>
+
+                <div class="cart-prix-total-box">
+                    Prix total: <span class="prix-total">{{ items.data.totalHT }} € <small>HT</small></span><span class="prix-tva">({{ items.data.totalTaxe }} € <small>TVA</small>)</span>
+                </div>
+
+                <a class="cart-vider-btn" href="{{ path('panier_vider')}}">Vider le Panier</a>
+            </div>
+
+            <ul class="cart-produits-ul">
+
+                {% for item in items.produits %}
+                    <li class="cart-produit-box">
+
+                        <div class="cart-img-and-info">
+                            <figure>
+                                <a href="{{ path('show_produit', {'id': item.produit.id}) }}"><img  class="cart-produit-img" src="{{ asset(item.produit.imgProduit) }}" alt="{{ item.produit.titre }} image"></a>
+                            </figure>
+
+                            <div class="cart-produit-info">
+                                <h4>{{ item.produit.titre }}</h4>
+                                <strong>{{item.produit.marque}}</strong>
+                                {% if item.produit.categorie is not null %}  
+                                    <span>{{ item.produit.poidsVolumeUnitaire }} {% if item.produit.uniteMesure == 1 %}g{% else %}ml{% endif %} ( {{ item.produit.prixAuKiloLitre}} € / {% if item.produit.uniteMesure == 1 %}kg{% else %}L{% endif %})</span>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="cart-options">
+                            <div class="cart-plus-moins">
+                                <a href="{{ path('panier_reduire', {'produit': item.produit.id}) }}"><img class="cart-moins" src="{{ asset('img/icons/moins-icon.png') }}" alt="moins"></a>
+                                <span class="cart-quantite"> {{ item.quantity }} </span>
+                                <a href="{{ path('panier_ajouter', {'produit': item.produit.id}) }}"><img class="cart-plus" src="{{ asset('img/icons/plus-icon.png') }}" alt="plus"></a>
+                            </div>
+                            <div class="cart-prix-supprimer">
+                                <strong class="cart-prix">{{ (item.produit.prixUnitaire * item.quantity) | number_format(2, ',', '')}} € 
+                                    <small>({{ ((item.produit.prixUnitaire * (1 - item.produit.taxe))* item.quantity) | number_format(2, ',', '')}} € HT | {% if (item.produit.taxe * 100) matches '/^\\d+$/' %}{{ (item.produit.taxe * 100) }}{% else %}{{ (item.produit.taxe * 100) | number_format(2, ',', '')}}{% endif %}% TVA)</small>
+                                </strong>
+                            </div>
+                            <a href="{{ path('panier_supprimer', {'produit': item.produit.id}) }}"><img class="cart-supprimer" src="{{ asset('img/icons/supprimer-icon.png') }}" alt="supprimer"></a>
+                        </div>
+                    </li>
+                {% endfor %} 
+                
+            </ul>
+        {% else %}
+            <p class="cart-vide">Surprise, le panier est vide!</p>
+        {% endif %}
+
+    </section>
+{% endblock %}
