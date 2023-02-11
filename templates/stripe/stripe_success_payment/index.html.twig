@@ -9,10 +9,10 @@
         <header class="cart-header">
             <nav class="cart-header-nav">
                     <a class="back-icon-box" href="{{ path('app_home')}}">
-                        <img class="back-icon" src=" {{ asset('img/icons/home-white.png') }}" alt="Icon home">
+                        <img class="back-icon" src=" {{ asset('dist/img/icons/home-white.png') }}" alt="Icon home">
                     </a>            
                 <figure class="cart-logo-box">
-                    <img class="cart-logo-gattino" src="{{ asset('img/logo/logo-GATTINO.jpg') }}" alt="Logo Epicerie Gattino">
+                    <img class="cart-logo-gattino" src="{{ asset('dist/img/logo/logo-GATTINO.jpg') }}" alt="Logo Epicerie Gattino">
                 </figure>
             </nav>
         </header>
@@ -41,7 +41,7 @@
             <form method="post">
                 <label for="facturePdf"></label>
                 <input type="radio" class="facture-input" name="facturePdf" value="facturePdf" checked>
-                <button type="submit" id="facturePdfBtn" name="factureSubmit" class="btn btn-success"><img class="pdf-icon" src="{{ asset('img/icons/pdf-icon.png') }}" alt="facture.pdf"> Télécharger la facture</button>
+                <button type="submit" id="facturePdfBtn" name="factureSubmit" class="btn btn-success"><img class="pdf-icon" src="{{ asset('dist/img/icons/pdf-icon.png') }}" alt="facture.pdf"> Télécharger la facture</button>
             </form>
         </div>
 

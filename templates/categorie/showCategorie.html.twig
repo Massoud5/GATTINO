@@ -23,15 +23,15 @@
 
 							<div class="prod-panier-box">
 								<a class="cat-prod-ajouter-btn add-js-cat" href="{{ path('panier_ajouterC', {'produit': array.produit.id}) }}" style="{% if array.quantity > 0 %}display:none;{% endif %}">
-									<img class="Panier-icon" src="{{ asset('img/icons/panier-plus.png') }}" alt="Au panier">
+									<img class="Panier-icon" src="{{ asset('dist/img/icons/panier-plus.png') }}" alt="Au panier">
 								</a>
 								<div class="cat-prod-plus-moins" style="{% if array.quantity > 0 %}display:block;{% endif %}">
 									<a class="delete-js-cat" href="{{ path('panier_reduireC', {'produit': array.produit.id}) }}">
-										<img class="Panier-icon" src="{{ asset('img/icons/panier-moins.png') }}" alt="Au panier">
+										<img class="Panier-icon" src="{{ asset('dist/img/icons/panier-moins.png') }}" alt="Au panier">
 									</a>
 									<span class="quantity">{{ array.quantity }}</span>
 									<a class="add-js-cat" href="{{ path('panier_ajouterC', {'produit': array.produit.id}) }}">
-										<img class="Panier-icon" src="{{ asset('img/icons/panier-plus.png') }}" alt="Au panier">
+										<img class="Panier-icon" src="{{ asset('dist/img/icons/panier-plus.png') }}" alt="Au panier">
 									</a>
 								</div>
 							</div>
@@ -67,5 +67,5 @@
 {% block javascripts %}
 	{{ parent() }}
 	<script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
-	<script src="{{ asset('js/generalScript/ajax-reload.js') }}" defer></script>
+	<script src="{{ asset('dist/js/generalScript/ajax-reload.js') }}" defer></script>
 {% endblock %}

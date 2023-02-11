@@ -7,10 +7,10 @@
         <header class="cart-header">
             <nav class="cart-header-nav">
                     <a class="back-icon-box" href="{{ path('app_home')}}">
-                        <img class="back-icon" src=" {{ asset('img/icons/home-white.png') }}" alt="Icon home">
+                        <img class="back-icon" src=" {{ asset('dist/img/icons/home-white.png') }}" alt="Icon home">
                     </a>            
                 <figure class="cart-logo-box">
-                    <img class="cart-logo-gattino" src="{{ asset('img/logo/logo-GATTINO.jpg') }}" alt="Logo Epicerie Gattino">
+                    <img class="cart-logo-gattino" src="{{ asset('dist/img/logo/logo-GATTINO.jpg') }}" alt="Logo Epicerie Gattino">
                 </figure>
             </nav>
         </header>
@@ -64,16 +64,16 @@
 
                         <div class="cart-options">
                             <div class="cart-plus-moins">
-                                <a href="{{ path('panier_reduire', {'produit': item.produit.id}) }}"><img class="cart-moins" src="{{ asset('img/icons/moins-icon.png') }}" alt="moins"></a>
+                                <a href="{{ path('panier_reduire', {'produit': item.produit.id}) }}"><img class="cart-moins" src="{{ asset('dist/img/icons/moins-icon.png') }}" alt="moins"></a>
                                 <span class="cart-quantite"> {{ item.quantity }} </span>
-                                <a href="{{ path('panier_ajouter', {'produit': item.produit.id}) }}"><img class="cart-plus" src="{{ asset('img/icons/plus-icon.png') }}" alt="plus"></a>
+                                <a href="{{ path('panier_ajouter', {'produit': item.produit.id}) }}"><img class="cart-plus" src="{{ asset('dist/img/icons/plus-icon.png') }}" alt="plus"></a>
                             </div>
                             <div class="cart-prix-supprimer">
                                 <strong class="cart-prix">{{ (item.produit.prixUnitaire * item.quantity) | number_format(2, ',', '')}} € 
                                     <small>({{ ((item.produit.prixUnitaire * (1 - item.produit.taxe))* item.quantity) | number_format(2, ',', '')}} € HT | {% if (item.produit.taxe * 100) matches '/^\\d+$/' %}{{ (item.produit.taxe * 100) }}{% else %}{{ (item.produit.taxe * 100) | number_format(2, ',', '')}}{% endif %}% TVA)</small>
                                 </strong>
                             </div>
-                            <a href="{{ path('panier_supprimer', {'produit': item.produit.id}) }}"><img class="cart-supprimer" src="{{ asset('img/icons/supprimer-icon.png') }}" alt="supprimer"></a>
+                            <a href="{{ path('panier_supprimer', {'produit': item.produit.id}) }}"><img class="cart-supprimer" src="{{ asset('dist/img/icons/supprimer-icon.png') }}" alt="supprimer"></a>
                         </div>
                     </li>
                 {% endfor %} 

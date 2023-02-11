@@ -2,14 +2,14 @@
 
 {% block stylesheets %}
     {{parent()}}
-    <link rel="stylesheet" href="{{ asset('style/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('dist/style/home.css') }}">
 {% endblock %}
 
 {% block body %}
 
     <div class="container">
 
-        <section class="accueil" style="background-image:url('{{ asset('img/photos/accueil/accueil.jpg')}}');">
+        <section class="accueil" style="background-image:url('{{ asset('dist/img/photos/accueil/accueil.jpg')}}');">
             <h1>Bienvenue chez GATTINO</h1> 
         </section>
 
@@ -51,10 +51,10 @@
                 </ul>
 
                 <button class="carousel-btn prev" data-carousel-button="prev">
-                    <img class="left-icon" src="{{ asset('img/icons/left-icon.png')}}" alt="left icon">
+                    <img class="left-icon" src="{{ asset('dist/img/icons/left-icon.png')}}" alt="left icon">
                 </button>
                 <button class="carousel-btn next" data-carousel-button="next">
-                    <img class="right-icon" src="{{ asset('img/icons/right-icon.png')}}" alt="right icon">
+                    <img class="right-icon" src="{{ asset('dist/img/icons/right-icon.png')}}" alt="right icon">
                 </button>
 
                 <ul class="slide-box" data-slides>
@@ -125,7 +125,7 @@
             </ul>
         </section>
 
-        <button onclick="goToTop()" id="go-to-top" title="retourner au début"><img class="up-icon" src="{{ asset('img/icons/arrow-up.png')}}" alt="flèche haut"></button>
+        <button onclick="goToTop()" id="go-to-top" title="retourner au début"><img class="up-icon" src="{{ asset('dist/img/icons/arrow-up.png')}}" alt="flèche haut"></button>
 
     </div>
 
@@ -133,5 +133,5 @@
 {% endblock %}
 {% block javascripts %}
     {{parent()}}
-    <script src="{{ asset('js/home/home.js') }}"></script>
+    <script src="{{ asset('dist/js/home/home.js') }}"></script>
 {% endblock %}

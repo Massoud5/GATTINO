@@ -12,20 +12,20 @@
 	{% endif %}
 	<div class="header-box">
 		<figure class="logo-box">
-			<a class="home-logo-link" href="{{ path('app_home')}}" tabindex="1"><img class="logo-gattino" src="{{ asset('img/logo/logo-GATTINO.jpg') }}" alt="Logo-Epicerie-Gattino"></a>
+			<a class="home-logo-link" href="{{ path('app_home')}}" tabindex="1"><img class="logo-gattino" src="{{ asset('dist/img/logo/logo-GATTINO.jpg') }}" alt="Logo-Epicerie-Gattino"></a>
 		</figure>
 
 		<nav class="nav-box">
 
 			<div class="responsive-nav-icon">
-				<img class="open-nav" src="{{ asset('img/icons/open-icon.png') }}" alt="open icon">
-				<img class="close-nav" src="{{ asset('img/icons/close-icon.png') }}" alt="close icon">
+				<img class="open-nav" src="{{ asset('dist/img/icons/open-icon.png') }}" alt="open icon">
+				<img class="close-nav" src="{{ asset('dist/img/icons/close-icon.png') }}" alt="close icon">
 			</div>
 
 			<div class="nav-el produits-nav" tabindex="2">
 				<div class="Produits_nav_box">
 					<div class="produit_nav_el">Produits</div>
-					<img src="{{ asset('img/icons/arrowNav-white.png') }}" alt="arrow" class="arrow-nav">
+					<img src="{{ asset('dist/img/icons/arrowNav-white.png') }}" alt="arrow" class="arrow-nav">
 				</div>
 				<div class="produit-line-nav"></div>
 
@@ -72,11 +72,11 @@
 				<div class="contact-line-nav"></div>
 			</div>
 
-			<div class="search-icon nav-icon" tabindex="6"><img class="search-icon" src="{{ asset('img/icons/search-white.png')}}" alt="Icon search"></div>
+			<div class="search-icon nav-icon" tabindex="6"><img class="search-icon" src="{{ asset('dist/img/icons/search-white.png')}}" alt="Icon search"></div>
 
 			<a class="nav-icon panier-a" href="{{ path('index_panier')}}">
 				<div class="panier-general-navbar-box">
-					<img class="panier-icon" src="{{ asset('img/icons/panier-white.png')}}" alt="Icon panier">
+					<img class="panier-icon" src="{{ asset('dist/img/icons/panier-white.png')}}" alt="Icon panier">
 
 					<span class="panier-quantity">
 						{% if items | length > 0 %}
@@ -91,7 +91,7 @@
 		<div hidden id="search-bar-display" style="position:absolute;"></div>
 	{% endif %}
 	<div class="search-bar-box">
-		<a><img class="close-search-box" src="{{ asset('img/icons/close-icon.png') }}" alt="close icon"></a>
+		<a><img class="close-search-box" src="{{ asset('dist/img/icons/close-icon.png') }}" alt="close icon"></a>
 		<div class="search-form-box">
 			<div class="search-elements">
 				{# {{ form(searchForm) }} #}

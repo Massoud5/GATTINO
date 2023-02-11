@@ -24,10 +24,6 @@ class ResetPasswordRequestFormType extends AbstractType
                 'label' => 'Email*',
                 'invalid_message' => 'Entrez un mail valid',
             ])
-            ->add('captcha', Recaptcha3Type::class, [
-                'constraints' => new Recaptcha3(),
-                'action_name' => 'demande-reset-mdp',
-            ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
                     'class' => 'btn btn-success reset-pass-btn',

@@ -9,10 +9,10 @@
         <header class="cart-header">
             <nav class="cart-header-nav">
                     <a class="back-icon-box" href="{{ path('app_home')}}">
-                        <img class="back-icon" src=" {{ asset('img/icons/home-white.png') }}" alt="Icon home">
+                        <img class="back-icon" src=" {{ asset('dist/img/icons/home-white.png') }}" alt="Icon home">
                     </a>            
                 <figure class="cart-logo-box">
-                    <img class="cart-logo-gattino" src="{{ asset('img/logo/logo-GATTINO.jpg') }}" alt="Logo Epicerie Gattino">
+                    <img class="cart-logo-gattino" src="{{ asset('dist/img/logo/logo-GATTINO.jpg') }}" alt="Logo Epicerie Gattino">
                 </figure>
             </nav>
         </header>
@@ -154,7 +154,7 @@
                                     </div>
                                 </div>
 
-                                <p id="message-commande" style="display:none"><img src="{{asset('img/icons/attention-icon.png')}}" alt="attention-icon" class="attention-icon"> Vous pouvez récupérer la commande minimum 2h après la validation de votre commande.</p>
+                                <p id="message-commande" style="display:none"><img src="{{asset('dist/img/icons/attention-icon.png')}}" alt="attention-icon" class="attention-icon"> Vous pouvez récupérer la commande minimum 2h après la validation de votre commande.</p>
                                 {% endif %}
                             
                             {% if servExists == true %}
@@ -174,8 +174,8 @@
                                 </div>
                             {% endif %}
 
-                            <p class="checkout-attention-text"><img src="{{asset('img/icons/attention-icon.png')}}" alt="attention-icon" class="attention-icon"> Veuillez consulter nos <a href="https://www.google.com/maps/place/Gattino/@48.6058373,7.7464399,17z/data=!3m1!4b1!4m5!3m4!1s0x4796c9ae16f1e75b:0x1a27b06cada1c70!8m2!3d48.605832!4d7.7486405" target="_blank" class="horaires-link">horaires d'ouverture</a> avant de vous rendre à la boutique.</p>
-                            <p class="checkout-attention-text"><img src="{{asset('img/icons/attention-icon.png')}}" alt="attention-icon" class="attention-icon"> Si vous choisissez l'après-midi, vous pouvez vous rendre à la boutique à partir de <strong>14h</strong>.</p>
+                            <p class="checkout-attention-text"><img src="{{asset('dist/img/icons/attention-icon.png')}}" alt="attention-icon" class="attention-icon"> Veuillez consulter nos <a href="https://www.google.com/maps/place/Gattino/@48.6058373,7.7464399,17z/data=!3m1!4b1!4m5!3m4!1s0x4796c9ae16f1e75b:0x1a27b06cada1c70!8m2!3d48.605832!4d7.7486405" target="_blank" class="horaires-link">horaires d'ouverture</a> avant de vous rendre à la boutique.</p>
+                            <p class="checkout-attention-text"><img src="{{asset('dist/img/icons/attention-icon.png')}}" alt="attention-icon" class="attention-icon"> Si vous choisissez l'après-midi, vous pouvez vous rendre à la boutique à partir de <strong>14h</strong>.</p>
 
                             <hr>
 
@@ -205,8 +205,8 @@
 
 {% block javascripts %}
 
-    <script src="{{ asset('js/checkout/feries.js') }}"></script>
-    <script src="{{ asset('js/checkout/checkout.js') }}"></script>
+    <script src="{{ asset('dist/js/checkout/feries.js') }}"></script>
+    <script src="{{ asset('dist/js/checkout/checkout.js') }}"></script>
 
     <script type="text/javascript">
     

@@ -35,11 +35,11 @@
                                         <a class="ajouter-btn" href="{{ path('panier_ajouterP', {'produit': produit.id}) }}"><button type="button" class="btn btn-success">Ajouter au panier</button></a>
                                         <div class="vitrine-plus-moins">
                                             <a href="{{ path('panier_reduireP', {'produit': produit.id}) }}">
-                                                <img class="vitrine-panier-icon" src="{{ asset('img/icons/panier-moins.png') }}" alt="icône ajouter">
+                                                <img class="vitrine-panier-icon" src="{{ asset('dist/img/icons/panier-moins.png') }}" alt="icône ajouter">
                                             </a>
                                             <span class="vitrine-quantity">{{ quantity }}</span>
                                             <a href="{{ path('panier_ajouterP', {'produit': produit.id}) }}">
-                                                <img class="vitrine-panier-icon" src="{{ asset('img/icons/panier-plus.png') }}" alt="icône ajouter">
+                                                <img class="vitrine-panier-icon" src="{{ asset('dist/img/icons/panier-plus.png') }}" alt="icône ajouter">
                                             </a>
                                         </div>
                                         <small class="vitrine-produit-commande-info">Contacter le vendeur pour plus de 12 quantités.</small>

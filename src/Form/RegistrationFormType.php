@@ -23,19 +23,27 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('prenom', TextType::class, [
-                'attr' => ['class' => 'form-control form-control-lg'],
+                'attr' => [
+                    'class' => 'form-control form-control-lg',
+                    'value' => 'Massoud'
+                ],
                 'label' => 'Prénom',
                 'invalid_message' => 'Entrez votre prénom svp!',
             ])
             ->add('nom', TextType::class, [
-                'attr' => ['class' => 'form-control form-control-lg'],
+                'attr' => [
+                    'class' =>'form-control form-control-lg',
+                    'value' => 'SHAMS'
+                ],
                 'label' => 'NOM',
                 'invalid_message' => 'Entrez votre nom svp!',
             ])
             ->add('email', EmailType::class, [
-                'attr' => ['class' => 'form-control form-control-lg',
-                'placeholder' => 'exemple@exemple.com',
-                'pattern' => '^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$'
+                'attr' => [
+                    'class' => 'form-control form-control-lg',
+                    'placeholder' => 'exemple@exemple.com',
+                    'pattern' => '^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$',
+                    'value' => 'massoud.shams2014@hotmail.com'
                 ],
                 'label' => 'Email',
                 'invalid_message' => 'Entrez un mail valid svp!',
@@ -45,6 +53,7 @@ class RegistrationFormType extends AbstractType
                     'class' => 'form-control form-control-lg',
                     'pattern' => '^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$',
                     'placeholder' => '0612345678',
+                    'value' => '0612345678'
                 ],
                 'label' => 'Tel',
                 'invalid_message' => 'Entrez un numéro de téléphone valid svp!',
@@ -59,6 +68,7 @@ class RegistrationFormType extends AbstractType
                     'attr' => [
                         'class' => 'form-control form-control-lg',
                         'autocomplete' => 'new-password',
+                        'value' => '112233445566778899'
                     ],
                 ],
                 'first_options'  => ['label' => 'Mot de passe'],

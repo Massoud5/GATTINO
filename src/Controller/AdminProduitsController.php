@@ -69,7 +69,7 @@ class AdminProduitsController extends AbstractController
                 }
                 
                 // enregistrer le path dans db
-                $produit->setImgProduit('img/photos/produits/'.$newFilename);
+                $produit->setImgProduit('dist/img/photos/produits/'.$newFilename);
             }
             
             $entityManager->persist($produitFormData);

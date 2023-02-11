@@ -24,8 +24,6 @@ class SecurityController extends AbstractController
         if ($this->getUser()) {
             return $this->redirectToRoute('app_admin');
         }
-        // dd('hello');
-
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
@@ -50,7 +48,7 @@ class SecurityController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             // chercher l'utilisateur par son email
             $user = $userRepository->findOneByEmail($form->get('email')->getData());
-            
+    
             //vérifier si l'utilisateur existe
             if($user){
                 // générer un token
@@ -74,7 +72,7 @@ class SecurityController extends AbstractController
                     $context
                 );
 
-                $this->addFlash('success', 'Email envoyé avec succès');
+                $this->addFlash('success', 'Changez le mot de passe via le mail envoyé dans votre boîte mail');
                 return $this->redirectToRoute('app_login');
 
             }else{

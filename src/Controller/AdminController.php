@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
@@ -105,7 +105,7 @@ class AdminController extends AbstractController
 
                 // updates the 'brochureFilename' property to store the PDF file name
                 // instead of its contents
-                $service->setImgService('img/photos/services/'.$newFilename);
+                $service->setImgService('dist/img/photos/services/'.$newFilename);
             }
             
             $entityManager->persist($serviceFormData);
@@ -190,7 +190,7 @@ class AdminController extends AbstractController
 
                 // updates the 'brochureFilename' property to store the PDF file name
                 // instead of its contents
-                $categorie->setCatImg('img/photos/categories/'.$newFilename);
+                $categorie->setCatImg('dist/img/photos/categories/'.$newFilename);
 
             }
             
