@@ -1,5 +1,5 @@
 @import './nav-produits-hover.css';
-@import './nav-prods-hov-responsive.css';
+
 /* navbar.css */
 .header{
     position: fixed;
@@ -40,6 +40,11 @@
     height: 100%;
     border-left: 1px solid #f5deb382;
     z-index: 99;
+}
+
+.open-nav,
+.close-nav{
+    display: none;
 }
 
 .nav-icon{

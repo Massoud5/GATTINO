@@ -35,7 +35,7 @@
 						<ul class="nav-services-list-ul">
 							{% for service in services %}
 								{% if service.commandabilite %}
-									<a class="nav-services-item"  {% if service.nom == 'plateaux' %}id="plateaux-nav" onclick="accessToPlateaux()"{% endif %} {% if isHome is not defined %}href="{{ path('app_home') }}"{% endif %}>
+									<a class="nav-services-item"  {% if service.nom == 'Plateaux' %}id="plateaux-nav" onclick="accessToPlateaux()"{% endif %} {% if isHome is not defined %}href="{{ path('app_home') }}"{% endif %}>
 										{{ service.titre }}
 									</a>
 								{% endif %}

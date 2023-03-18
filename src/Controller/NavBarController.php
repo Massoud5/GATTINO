@@ -15,12 +15,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class NavBarController extends AbstractController
 {
-    #[Route('/nav', name: 'app_navbar')]
-    public function index(): Response
-    {
-        return $this->render('nav_bar/index.html.twig', []);
-    }
-
     #[Route('/show/actualites', name: 'show_actualites')]
     public function showActualites(ManagerRegistry $doctrine): Response
     {
@@ -43,30 +37,30 @@ class NavBarController extends AbstractController
         ]);
     }
 
-    #[Route('/produits/plateaux', name: 'access_plateaux')]
-    public function accessPlateaux(ManagerRegistry $doctrine, CartService $cartService, Request $request, ProduitRepository $produitRepo): Response
-    {
-        $categories = $doctrine->getRepository(Categorie::class)->findBy([], []);
-        $services = $doctrine->getRepository(Service::class)->findAll();
+    // #[Route('/produits/plateaux', name: 'access_plateaux')]
+    // public function accessPlateaux(ManagerRegistry $doctrine, CartService $cartService, Request $request, ProduitRepository $produitRepo): Response
+    // {
+    //     $categories = $doctrine->getRepository(Categorie::class)->findBy([], []);
+    //     $services = $doctrine->getRepository(Service::class)->findAll();
 
-        // search bar
-        $form = $this->createForm(SearchProduitType::class);
-        $search = $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $q = $search->get('mots')->getData();
-            $prodsSearched = $produitRepo->search($q);
-        } else {
-            $q = '';
-            $prodsSearched = '';
-        }
+    //     // search bar
+    //     $form = $this->createForm(SearchProduitType::class);
+    //     $search = $form->handleRequest($request);
+    //     if ($form->isSubmitted() && $form->isValid()) {
+    //         $q = $search->get('mots')->getData();
+    //         $prodsSearched = $produitRepo->search($q);
+    //     } else {
+    //         $q = '';
+    //         $prodsSearched = '';
+    //     }
 
-        return $this->render('nav_bar/plateaux.html.twig', [
-            'categories' => $categories,
-            'services' => $services,
-            'items' => $cartService->getFullCart(),
-            'searchForm' => $form->createView(),
-            'prodsSearched' => $prodsSearched,
-            'q' => $q,
-        ]);
-    }
+    //     return $this->render('nav_bar/plateaux.html.twig', [
+    //         'categories' => $categories,
+    //         'services' => $services,
+    //         'items' => $cartService->getFullCart(),
+    //         'searchForm' => $form->createView(),
+    //         'prodsSearched' => $prodsSearched,
+    //         'q' => $q,
+    //     ]);
+    // }
 }

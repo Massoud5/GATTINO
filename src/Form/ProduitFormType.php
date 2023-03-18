@@ -177,10 +177,10 @@ class ProduitFormType extends AbstractType
                 ],
                 'invalid_message' => 'Entrez une description de la catégorie',
             ])
-            ->add('captcha', Recaptcha3Type::class, [
-                'constraints' => new Recaptcha3(),
-                'action_name' => 'produit',
-            ])
+            // ->add('captcha', Recaptcha3Type::class, [
+            //     'constraints' => new Recaptcha3(),
+            //     'action_name' => 'produit',
+            // ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
                     'class' => 'btn btn-outline-success',

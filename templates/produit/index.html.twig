@@ -1,6 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProduitController!{% endblock %}
+{% block title %}{{ produit.titre }}{% endblock %}
+
+{% block stylesheets %}
+	{{parent()}}
+    <link rel="stylesheet" href="{{ asset('dist/style/navbar/navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('dist/style/navbar/responsiveNavBar.css') }}">
+	<link rel="stylesheet" href="{{ asset('dist/style/annexes/produitStyle.css') }}">
+{% endblock %}
 
 {% block body %}
 
@@ -81,4 +88,8 @@
         {% endif %}
     </script>
     
+{% endblock %}
+
+{% block javascripts %}
+	<script src="{{ asset('dist/js/generalScript/navbar.js') }}" defer></script>
 {% endblock %}

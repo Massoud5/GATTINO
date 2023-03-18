@@ -2,6 +2,11 @@
 
 {% block title %}Administration{% endblock %}
 
+{% block stylesheets %}
+	{{parent()}}
+	<link rel="stylesheet" href="{{ asset('dist/style/admin/adminMainStyle.css') }}">
+{% endblock %}
+
 {% block body %}
     {% block navBar %}{% endblock %}
 
@@ -84,7 +89,7 @@
                             <td>{{produit.prixUnitaire | number_format(2,',','')}} €</td>
                             <td><div class="admin-produit-ease-out">{% if produit.categorie == null %}{{produit.service}}{% else %}{{produit.categorie}}{% endif %}</div></td>
                             <td><a href="{{ path('admin_produit_modify', {'id':produit.id}) }}" class="admin-yellow-btn">Modifier</a></td>
-                            <td><a href="{{ path('admin_produit_delete', {'id':produit.id}) }}" class="admin-red-btn">Supprimer</a></td> 
+                            <td><a href="{{ path('admin_produit_delete', {'id':produit.id}) }}" class="admin-red-btn" onclick="return confirm('Etes-vous sûre de vouloir supprimer?')">Supprimer</a></td> 
                             <td>
                                 <a href="{{ path('admin_produit_inverse', {'id':produit.id}) }}" class={% if produit.active == true %}"admin-green-btn"{% else %}"admin-black-btn"{% endif %}>
                                     {% if produit.active == true %}Activé{% else %}Désactivé{% endif %}
@@ -120,7 +125,7 @@
                             <td>{{produit.prixUnitaire | number_format(2,',','')}} €</td>
                             <td><div class="admin-produit-ease-out">{% if produit.categorie == null %}{{produit.service}}{% else %}{{produit.categorie}}{% endif %}</div></td>
                             <td><a href="{{ path('admin_produit_modify', {'id':produit.id}) }}" class="admin-yellow-btn">Modifier</a></td>
-                            <td><a href="{{ path('admin_produit_delete', {'id':produit.id}) }}" class="admin-red-btn">Supprimer</a></td> 
+                            <td><a href="{{ path('admin_produit_delete', {'id':produit.id}) }}" class="admin-red-btn" onclick="return confirm('Etes-vous sûre de vouloir supprimer?')">Supprimer</a></td> 
                             <td>
                                 <a href="{{ path('admin_produit_inverse', {'id':produit.id}) }}" class={% if produit.active == true %}"admin-green-btn"{% else %}"admin-black-btn"{% endif %}>
                                     {% if produit.active == true %}Activé{% else %}Désactivé{% endif %}
@@ -135,9 +140,4 @@
 
     </div>
 
-    <style>
-        footer{
-            display: none;
-        }
-    </style>
 {% endblock %}

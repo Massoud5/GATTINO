@@ -1,4 +1,6 @@
-/* responsivNavBar.css */
+@import './nav-prods-hov-responsive.css';
+
+/* Ne pas afficher les boutons menu si:*/
 @media (min-width:801px) {
     .responsive-nav-icon{
         display: none;
@@ -20,13 +22,19 @@
     }
 
     .responsive-nav-icon{
-        display: block;
         z-index: 150;
-        margin-right: 30px;
+        /* margin-left: 80%; */
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 20px;
     }
+
+    .open-nav{
+        display: block !important;
+    }
+
     .open-nav,
     .close-nav{
-        display: block;
         width: 30px;
         cursor: pointer;
         transform: scale(1);
@@ -43,7 +51,7 @@
     }
 
     .toggle > .responsive-nav-icon > .open-nav{
-        display:none;
+        display: none !important;
     }
     .toggle > .responsive-nav-icon >.close-nav{
         display:block;

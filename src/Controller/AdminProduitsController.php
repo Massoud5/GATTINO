@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Categorie;
 use App\Entity\Produit;
 use App\Entity\Service;
+use App\Entity\Categorie;
 use App\Form\ProduitFormType;
 use App\Repository\ProduitRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
@@ -21,8 +22,9 @@ class AdminProduitsController extends AbstractController
     // ----------------------------PRODUITS-----------------------------------
 
     
-    #[Route('/admin/produit/ajouter', name: 'admin_produit_ajouter')]
-    #[Route('/admin/produit/modifier/{id}', name: 'admin_produit_modify')]
+    #[Route('/admin/6w3bocMghDiz4Xvckg6ijiT3kKfqdQl8L3VqNRJQ/produit/ajouter', name: 'admin_produit_ajouter')]
+    #[Route('/admin/6w3bocMghDiz4Xvckg6ijiT3kKfqdQl8L3VqNRJQ/produit/modifier/{id}', name: 'admin_produit_modify')]
+    #[IsGranted('ROLE_ADMIN')]
     public function adminProduitModifierAjouter(Request $request, EntityManagerInterface $entityManager, Produit $produit = null, SluggerInterface $slugger): Response
     {
         // le cas d'ajout
@@ -83,7 +85,8 @@ class AdminProduitsController extends AbstractController
         ]);
     }
     
-    #[Route('/admin/produit/supprimer/{id}', name: 'admin_produit_delete')]
+    #[Route('/admin/6w3bocMghDiz4Xvckg6ijiT3kKfqdQl8L3VqNRJQ/produit/supprimer/{id}', name: 'admin_produit_delete')]
+    #[IsGranted('ROLE_ADMIN')]
     public function adminProduitSupprimer(EntityManagerInterface $entityManager, Produit $produit, ProduitRepository $produitRepo): Response
     {
         // effacer l'image dans appilcation
@@ -98,6 +101,7 @@ class AdminProduitsController extends AbstractController
     }   
 
     #[Route('/admin/produit/inverser/{id}', name: 'admin_produit_inverse')]
+    #[IsGranted('ROLE_ADMIN')]
     public function adminProduitInverser(EntityManagerInterface $entityManager, Produit $produit, ProduitRepository $produitRepo): Response
     {
         if($produit->isActive() == true){
@@ -114,7 +118,8 @@ class AdminProduitsController extends AbstractController
         return $this->redirectToRoute('admin_produits_main');
     }   
     
-    #[Route('/admin/produits', name: 'admin_produits_main')]
+    #[Route('/admin/6w3bocMghDiz4Xvckg6ijiT3kKfqdQl8L3VqNRJQ/produits', name: 'admin_produits_main')]
+    #[IsGranted('ROLE_ADMIN')]
     public function adminProduitsShow(ProduitRepository $produitRepo, EntityManagerInterface $entityManager): Response
     {
         $produitsCommandables = $produitRepo->findByProduitsCommandables();
@@ -152,7 +157,8 @@ class AdminProduitsController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/produits/service/{id}', name: 'admin_produits_service')]
+    #[Route('/admin/6w3bocMghDiz4Xvckg6ijiT3kKfqdQl8L3VqNRJQ/produits/service/{id}', name: 'admin_produits_service')]
+    #[IsGranted('ROLE_ADMIN')]
     public function adminServiceProduitsShow(ProduitRepository $produitRepo, Service $service, EntityManagerInterface $entityManager): Response
     {
         $produitsCommandables = $produitRepo->findByServProdCommandables($service);
@@ -170,7 +176,8 @@ class AdminProduitsController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/produits/categorie/{id}', name: 'admin_produits_categorie')]
+    #[Route('/admin/6w3bocMghDiz4Xvckg6ijiT3kKfqdQl8L3VqNRJQ/produits/categorie/{id}', name: 'admin_produits_categorie')]
+    #[IsGranted('ROLE_ADMIN')]
     public function adminCategorieProduitsShow(ProduitRepository $produitRepo, Categorie $categorie, EntityManagerInterface $entityManager): Response
     {
         $produitsCommandables = $produitRepo->findByCatProdCommandables($categorie);

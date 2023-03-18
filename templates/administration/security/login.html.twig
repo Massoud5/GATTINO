@@ -2,6 +2,11 @@
 
 {% block title %}se connecter!{% endblock %}
 
+{% block stylesheets %}
+	{{parent()}}
+	<link rel="stylesheet" href="{{ asset('dist/style/annexes/loginStyle.css') }}">
+{% endblock %}
+
 {% block body %}
     {% block navBar %}{% endblock %}
 
@@ -46,16 +51,10 @@
         </form>
     </section>
 
-    <style>
-        footer{
-            display: none;
-        }
-    </style>
-
-    <script src="https://www.google.com/recaptcha/api.js"></script>
-    <script>
-        function onSubmit(token) {
-            document.getElementById("demo-form").submit();
-        }
-    </script>
+    {# // <script src="https://www.google.com/recaptcha/api.js"></script>
+    // <script>
+    //     function onSubmit(token) {
+    //         document.getElementById("demo-form").submit();
+    //     }
+    // </script> #}
 {% endblock %}

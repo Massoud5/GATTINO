@@ -88,7 +88,8 @@
 
 
 ### Ajax to reloadContents
-    https://www.youtube.com/watch?v=lygMPwUj9yU   
+    https://www.youtube.com/watch?v=lygMPwUj9yU
 
-### Hosting application
-    https://www.youtube.com/watch?v=BxCu9McB6GU
+### Double Authentify
+    https://www.youtube.com/watch?v=lkmW57JblzI
+

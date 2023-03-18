@@ -3,20 +3,21 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Security\EmailVerifier;
 use App\Form\RegistrationFormType;
 use App\Security\AppAuthenticator;
-use App\Security\EmailVerifier;
+use Symfony\Component\Mime\Address;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mime\Address;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
+use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 
 class RegistrationController extends AbstractController
 {
@@ -27,7 +28,8 @@ class RegistrationController extends AbstractController
         $this->emailVerifier = $emailVerifier;
     }
 
-    #[Route('/créer-nouveau-compte', name: 'app_register')]
+    #[Route('/admin/6w3bocMghDiz4Xvckg6ijiT3kKfqdQl8L3VqNRJQ/creer-nouveau-compte', name: 'app_register')]
+    #[IsGranted('ROLE_ADMIN')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
@@ -59,12 +61,12 @@ class RegistrationController extends AbstractController
                 // generate a signed url and email it to the user
                 $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                     (new TemplatedEmail())
-                        ->from(new Address('mailer@your-domain.com', 'Mailer Admin'))
+                        ->from(new Address('support@gattino.fr', 'Mailer Admin'))
                         ->to($user->getEmail())
                         ->subject('Confirmation de mail')
                         ->htmlTemplate('administration/registration/confirmation_email.html.twig')
                 );
-                // do anything else you need here, like send an email
+                
 
                 $this->addFlash('success', 'Pour vérifier le mail de ce nouveau compte, veuillez cliquer sur le lien envoyé au courriel renseigné.');
                 return $userAuthenticator->authenticateUser(
@@ -73,6 +75,7 @@ class RegistrationController extends AbstractController
                     $request
                 );
             }
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('administration/registration/register.html.twig', [
@@ -81,7 +84,8 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    #[Route('/verification-email', name: 'app_verify_email')]
+    #[Route('/admin/6w3bocMghDiz4Xvckg6ijiT3kKfqdQl8L3VqNRJQ/verification-email', name: 'app_verify_email')]
+    #[IsGranted('ROLE_ADMIN')]
     public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');

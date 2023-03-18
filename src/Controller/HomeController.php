@@ -45,11 +45,11 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/show/infoCommande', name: 'show_infoCommande')]
+    #[Route('/show/assortiments-cadeaux', name: 'show_asort_cadeaux')]
     public function showInfoCommande(ManagerRegistry $doctrine): Response
     {
         $categories = $doctrine->getRepository(Categorie::class)->findAll();
-        return $this->render('home/infoCommande.html.twig', [
+        return $this->render('home/assort_cadeaux.html.twig', [
             'categories' => $categories,
         ]);
     }

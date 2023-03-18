@@ -1,4 +1,4 @@
-/* Panier Header */
+/* Header */
 
 .cart-header{
     position: fixed;
@@ -48,7 +48,7 @@
     height: 100%;
 }
 
-/* Panier Navigation */
+/* Navigation */
 
 .cart-nav{
     padding-top: 120px;

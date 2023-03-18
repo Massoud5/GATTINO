@@ -21,7 +21,7 @@ class PanierController extends AbstractController
         ]);
     }
 
-    #[Route('/panier/ajouter/{produit}', name: 'panier_ajouter')]
+    #[Route('/panier/ajouter/produit/{produit}', name: 'panier_ajouter')]
     public function ajouter(Produit $produit, CartService $cartService)
     {
         // si le produit appartient à une catégorie
@@ -36,7 +36,7 @@ class PanierController extends AbstractController
         return $this->redirectToRoute("index_panier");
     }
 
-    #[Route('/panier/reduire/{produit}', name: 'panier_reduire')]
+    #[Route('/panier/reduire/produit/{produit}', name: 'panier_reduire')]
     public function reduire(Produit $produit, CartService $cartService): Response
     {
         $cartService->decrement($produit);
@@ -44,7 +44,7 @@ class PanierController extends AbstractController
         return $this->redirectToRoute("index_panier");
     }
 
-    #[Route('/panier/supprimer/{produit}', name: 'panier_supprimer')]
+    #[Route('/panier/supprimer/produit/{produit}', name: 'panier_supprimer')]
     public function supprimer(Produit $produit, CartService $cartService): Response
     {
         $cartService->delete($produit);
@@ -61,7 +61,7 @@ class PanierController extends AbstractController
     }
     // --------------------------------
     // Dans Categorie
-    #[Route('/panier/ajouterC/{produit}', name: 'panier_ajouterC')]
+    #[Route('/categorie/ajouter/produit/{produit}', name: 'panier_ajouterC')]
     public function ajouterDansCat(Produit $produit, CartService $cartService)
     {
         // limiter la quantité d'ajout de produit dans le panier
@@ -87,7 +87,7 @@ class PanierController extends AbstractController
         // ]);
     }
 
-    #[Route('/panier/reduireC/categorie/{produit}', name: 'panier_reduireC')]
+    #[Route('/categorie/reduire/produit/{produit}', name: 'panier_reduireC')]
     public function reduireDansCat(Produit $produit, CartService $cartService): Response
     {
         $cartService->decrement($produit);
@@ -108,7 +108,7 @@ class PanierController extends AbstractController
     }
     // --------------------------------
     // Dans Produit
-    #[Route('/panier/ajouterP/{produit}', name: 'panier_ajouterP')]
+    #[Route('/produit/ajouter/{produit}', name: 'panier_ajouterP')]
     public function ajouterDansProd(Produit $produit, CartService $cartService)
     {
         // limiter la quantité d'ajout de produit dans le panier
@@ -123,7 +123,7 @@ class PanierController extends AbstractController
         ]);
     }
 
-    #[Route('/panier/reduireP/{produit}', name: 'panier_reduireP')]
+    #[Route('/produit/reduire/{produit}', name: 'panier_reduireP')]
     public function reduireDansProd(Produit $produit, CartService $cartService): Response
     {
         $cartService->decrement($produit);

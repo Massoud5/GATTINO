@@ -25,7 +25,7 @@ class AdminController extends AbstractController
 {
 
     //--------------------COMMANDES-----------------------------------------------------------------------------------------------
-    #[Route('/admin', name: 'app_admin')]
+    #[Route('/admin/6w3bocMghDiz4Xvckg6ijiT3kKfqdQl8L3VqNRJQ', name: 'app_admin')]
     #[IsGranted('ROLE_ADMIN')]
     public function index(CommandeRepository $commandeRepository): Response
     {
@@ -37,7 +37,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/changer-statut-commande/{id}', name: 'changer_statut_commande')]
+    #[Route('/admin/6w3bocMghDiz4Xvckg6ijiT3kKfqdQl8L3VqNRJQ/changer-statut-commande/{id}', name: 'changer_statut_commande')]
     #[IsGranted('ROLE_ADMIN')]
     public function changerStatutCommande(Commande $commande, EntityManagerInterface $entityManager): Response
     {
@@ -58,8 +58,9 @@ class AdminController extends AbstractController
 
     //---------------------SERVICES-----------------------------------------------------------------------------------------------------------------------
 
-    #[Route('/admin/service/ajouter', name: 'admin_services_ajouter')]
-    #[Route('/admin/service/modifier/{id}', name: 'admin_service_modify')]
+    #[Route('/admin/service/6w3bocMghDiz4Xvckg6ijiT3kKfqdQl8L3VqNRJQ/ajouter', name: 'admin_services_ajouter')]
+    #[Route('/admin/service/6w3bocMghDiz4Xvckg6ijiT3kKfqdQl8L3VqNRJQ/modifier/{id}', name: 'admin_service_modify')]
+    #[IsGranted('ROLE_ADMIN')]
     public function adminServiceModifierAjouter(Request $request, EntityManagerInterface $entityManager, Service $service = null, SluggerInterface $slugger): Response
     {
         // le cas d'ajout
@@ -118,7 +119,8 @@ class AdminController extends AbstractController
         ]);
     }
     
-    #[Route('/admin/service/supprimer/{id}', name: 'admin_service_delete')]
+    #[Route('/admin/6w3bocMghDiz4Xvckg6ijiT3kKfqdQl8L3VqNRJQ/service/supprimer/{id}', name: 'admin_service_delete')]
+    #[IsGranted('ROLE_ADMIN')]
     public function adminServiceSupprimer(EntityManagerInterface $entityManager, Service $service, ServiceRepository $serviceRepo): Response
     {
         // effacer l'image dans appilcation
@@ -132,7 +134,8 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('admin_services');
     }
     
-    #[Route('/admin/services', name: 'admin_services')]
+    #[Route('/admin/6w3bocMghDiz4Xvckg6ijiT3kKfqdQl8L3VqNRJQ/services', name: 'admin_services')]
+    #[IsGranted('ROLE_ADMIN')]
     public function adminServicesShow(EntityManagerInterface $entityManager): Response
     {
         $services = $entityManager->getRepository(Service::class)->findAll();
@@ -143,8 +146,9 @@ class AdminController extends AbstractController
 
     //---------------------CATEGORIES-----------------------------------------------------------------------------------------------------------------------------
 
-    #[Route('/admin/categorie/ajouter', name: 'admin_categorie_ajouter')]
-    #[Route('/admin/categorie/modifier/{id}', name: 'admin_categorie_modify')]
+    #[Route('/admin/6w3bocMghDiz4Xvckg6ijiT3kKfqdQl8L3VqNRJQ/categorie/ajouter', name: 'admin_categorie_ajouter')]
+    #[Route('/admin/6w3bocMghDiz4Xvckg6ijiT3kKfqdQl8L3VqNRJQ/categorie/modifier/{id}', name: 'admin_categorie_modify')]
+    #[IsGranted('ROLE_ADMIN')]
     public function adminCategorieModifierAjouter(Request $request, EntityManagerInterface $entityManager, Categorie $categorie = null, SluggerInterface $slugger): Response
     {
         // le cas d'ajout
@@ -204,7 +208,8 @@ class AdminController extends AbstractController
         ]);
     }
     
-    #[Route('/admin/categorie/supprimer/{id}', name: 'admin_categorie_delete')]
+    #[Route('/admin/6w3bocMghDiz4Xvckg6ijiT3kKfqdQl8L3VqNRJQ/categorie/supprimer/{id}', name: 'admin_categorie_delete')]
+    #[IsGranted('ROLE_ADMIN')]
     public function adminCategorieSupprimer(EntityManagerInterface $entityManager, Categorie $categorie, CategorieRepository $categorieRepo): Response
     {
         // effacer l'image dans appilcation
@@ -218,7 +223,8 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('admin_categories');
     }
 
-    #[Route('/admin/categories', name: 'admin_categories')]
+    #[Route('/admin/6w3bocMghDiz4Xvckg6ijiT3kKfqdQl8L3VqNRJQ/categories', name: 'admin_categories')]
+    #[IsGranted('ROLE_ADMIN')]
     public function adminCategoriesShow(EntityManagerInterface $entityManager): Response
     {
         $categories = $entityManager->getRepository(Categorie::class)->findAll();

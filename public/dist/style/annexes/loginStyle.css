@@ -40,3 +40,36 @@
     left: 240px !important;
     transition: left 500ms !important;
 }
+
+footer{
+    display: none;
+}
+
+.reset-pass {
+    width: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.reset-pass h2{
+    font-size:30px;
+    margin:auto;
+    text-align: center;
+    margin-bottom:50px;
+    font-weight:400;
+}
+
+.reset-pass label{
+    margin-top:20px;
+}
+.error-message-reset-pass ul li {
+    color:red;
+}
+
+.reset-pass-btn{
+    margin:auto;
+    margin-top:20px;
+    display:block;
+}

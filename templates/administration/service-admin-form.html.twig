@@ -2,6 +2,11 @@
 
 {% block title %}Service{% endblock %}
 
+{% block stylesheets %}
+	{{parent()}}
+	<link rel="stylesheet" href="{{ asset('dist/style/admin/adminMainStyle.css') }}">
+{% endblock %}
+
 {% block body %}
     {% block navBar %}{% endblock %}
 
@@ -18,12 +23,6 @@
         </div>
     </section>
 
-
-    <style>
-        footer{
-            display: none;
-        }
-    </style>
     <script type="text/javascript">
         const nomServ = document.getElementById('service_form_nom');
         const imgServ = document.getElementById('service_form_image');

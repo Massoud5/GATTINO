@@ -2,6 +2,11 @@
 
 {% block title %}Paiement Annulé!{% endblock %}
 
+{% block stylesheets %}
+	{{parent()}}
+	<link rel="stylesheet" href="{{ asset('dist/style/annexes/stripeStyle.css') }}">
+{% endblock %}
+
 {% block body %}
     <section class="cancel-stripe">
         <h2>Echéc de paiement!</h2>

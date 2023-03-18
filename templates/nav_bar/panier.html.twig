@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+	{{parent()}}
+	<link rel="stylesheet" href="{{ asset('dist/style/annexes/panierStyle.css') }}">
+{% endblock %}
 
 {% block body %}
 

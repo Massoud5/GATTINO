@@ -197,3 +197,7 @@
     top: 0;
     transform: translateX(-50%);
 }
+
+footer{
+    display: none;
+}

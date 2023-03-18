@@ -74,10 +74,10 @@ class CategorieFormType extends AbstractType
                 ],
                 'invalid_message' => 'Choisissez oui ou non',
             ])
-            ->add('captcha', Recaptcha3Type::class, [
-                'constraints' => new Recaptcha3(),
-                'action_name' => 'categorie',
-            ])
+            // ->add('captcha', Recaptcha3Type::class, [
+            //     'constraints' => new Recaptcha3(),
+            //     'action_name' => 'categorie',
+            // ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
                     'class' => 'btn btn-outline-success',

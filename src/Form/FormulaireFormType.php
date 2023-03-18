@@ -141,10 +141,10 @@ class FormulaireFormType extends AbstractType
                 ],
                 'invalid_message' => 'Choisissez une option valide',
             ])
-            ->add('captcha', Recaptcha3Type::class, [
-                'constraints' => new Recaptcha3(),
-                'action_name' => 'formulaire',
-            ])
+            // ->add('captcha', Recaptcha3Type::class, [
+            //     'constraints' => new Recaptcha3(),
+            //     'action_name' => 'formulaire',
+            // ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
                     'class' => 'btn btn-outline-success',

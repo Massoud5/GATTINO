@@ -18,7 +18,7 @@ use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 
 class SecurityController extends AbstractController
 {
-    #[Route(path: '/dmlsdfpso165sdfsedSDeEsesdfDCjFSxcwlkxiof165/se-connecter', name: 'app_login')]
+    #[Route(path: '/ob6E8yL3AN0GdLWR7b16JWrWxaYe40o3UUdMirZn/se-connecter', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->getUser()) {
@@ -32,13 +32,13 @@ class SecurityController extends AbstractController
         return $this->render('administration/security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 
-    #[Route(path: '/se-déconnecter', name: 'app_logout')]
+    #[Route(path: '/6w3bocMghDiz4Xvckg6ijiT3kKfqdQl8L3VqNRJQ/se-déconnecter', name: 'app_logout')]
     public function logout(): Response
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
 
-    #[Route(path: '/oubli-pass', name: 'forgotten_password')]
+    #[Route(path: '/6w3bocMghDiz4Xvckg6ijiT3kKfqdQl8L3VqNRJQ/oubli-pass', name: 'forgotten_password')]
     public function forgottenPassword(Request $request, UserRepository $userRepository, TokenGeneratorInterface $tokenGenerator,
         EntityManagerInterface $doctrine, SendMailService $sendMailService): Response
     {
@@ -86,7 +86,7 @@ class SecurityController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/oubli-pass/{token}', name: 'reset_pass')]
+    #[Route(path: '/6w3bocMghDiz4Xvckg6ijiT3kKfqdQl8L3VqNRJQ/oubli-pass/{token}', name: 'reset_pass')]
     public function resetPass(string $token, Request $request, UserRepository $userRepository, EntityManagerInterface $doctrine,
         UserPasswordHasherInterface $passHasher): Response
     {

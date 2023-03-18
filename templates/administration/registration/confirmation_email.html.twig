@@ -1,15 +1,6 @@
-{% extends 'base.html.twig' %}
+<h1>Confirmation de email</h1>
 
-{% block title %}Confirmation{% endblock %}
-
-{% block body %}
-    {% block navBar %}{% endblock %}
-
-    <h1>Confirmation de email</h1>
-
-    <p>
-        Confirmez votre email en cliquant sur ce lien: <br><br>
-        <a href="{{ signedUrl }}">Confirmer</a>.
-        Ce lien va expirer dans {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
-    </p>
-{% endblock %}
+<p>
+    Confirmez votre email en cliquant sur ce lien: <a href="{{ signedUrl }}">Confirmer</a>. <br>
+    Ce lien va expirer dans {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
+</p>

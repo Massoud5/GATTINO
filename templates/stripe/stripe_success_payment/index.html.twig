@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+	{{parent()}}
+	<link rel="stylesheet" href="{{ asset('dist/style/annexes/stripeStyle.css') }}">
+{% endblock %}
+
 {% block scriptStripe %}
     <script src="https://js.stripe.com/v3/"></script>
 {% endblock %}
