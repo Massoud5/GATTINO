@@ -37,7 +37,7 @@
 
             <table class="table table-hover admin-table">
 
-                <a href="{{ path('admin_categorie_ajouter')}}" class="admin-blue-btn admin-btn-ajouter">Ajouter une catégorie</a>
+                <a href="{{ path('admin_categorie_ajouter')}}" class="blue-btn admin-btn-ajouter">Ajouter une catégorie</a>
 
                 <thead>
                     <tr>
@@ -54,8 +54,8 @@
                             <td>{{categorie.titre}}</td>
                             <td>{{categorie.produits | length}}</td>
                             <td>{% if categorie.commandabilite == false %}Non{% else %}Oui{% endif %}</td> 
-                            <td><a href="{{ path('admin_categorie_modify', {'id':categorie.id}) }}" class="admin-yellow-btn">Modifier</a></td>
-                            <td><a href="{{ path('admin_categorie_delete', {'id':categorie.id}) }}" class="admin-red-btn" onclick="return confirm('Etes-vous sûre de vouloir supprimer?')">Supprimer</a></td>
+                            <td><a href="{{ path('admin_categorie_modify', {'id':categorie.id}) }}" class="yellow-btn">Modifier</a></td>
+                            <td><a href="{{ path('admin_categorie_delete', {'id':categorie.id}) }}" class="red-btn" onclick="return confirm('Etes-vous sûre de vouloir supprimer?')">Supprimer</a></td>
                         </tr>
 
                     {% endfor %}

@@ -93,21 +93,47 @@
 	<div class="search-bar-box">
 		<a><img class="close-search-box" src="{{ asset('dist/img/icons/close-icon.png') }}" alt="close icon"></a>
 		<div class="search-form-box">
-			<div class="search-elements">
+			<div class="search-elements-box">
 				{# {{ form(searchForm) }} #}
 				{{ form_start(searchForm) }}
-					{{ form_row(searchForm.mots) }}
-					{{ form_row(searchForm.rechercher) }}
+					<div class="search-elements">
+						{{ form_row(searchForm.mots) }}
+						{{ form_row(searchForm.rechercher) }}
+					</div>
 				{{ form_end(searchForm) }}
 			</div>
 		</div>
 		<div class="search-results-box">
-			<h3>Résultat(s) de recherche: "{{ q }}"</h3>
+			<h3>Résultat de recherche: "{{ q }}"</h3>
 
 			{% if prodsSearched | length > 0 %}
 				<ul class="result-produits-list">
 					{% for produit in prodsSearched %}
 						{% if produit.commandable == true %}
+							<a href="{{path('show_produit', {'id':produit.id}) }}" class="item-li">
+								<img class="service-item-img" src="{{ asset(produit.imgProduit)}}" alt="photo {{ produit.titre }}">
+								<div class="service-item-info">
+									<h5>{{ produit.titre }}</h5>
+									<span>{{ produit.prixUnitaire }}
+										€</span>
+								</div>
+							</a>
+							<a href="{{path('show_produit', {'id':produit.id}) }}" class="item-li">
+								<img class="service-item-img" src="{{ asset(produit.imgProduit)}}" alt="photo {{ produit.titre }}">
+								<div class="service-item-info">
+									<h5>{{ produit.titre }}</h5>
+									<span>{{ produit.prixUnitaire }}
+										€</span>
+								</div>
+							</a>
+							<a href="{{path('show_produit', {'id':produit.id}) }}" class="item-li">
+								<img class="service-item-img" src="{{ asset(produit.imgProduit)}}" alt="photo {{ produit.titre }}">
+								<div class="service-item-info">
+									<h5>{{ produit.titre }}</h5>
+									<span>{{ produit.prixUnitaire }}
+										€</span>
+								</div>
+							</a>
 							<a href="{{path('show_produit', {'id':produit.id}) }}" class="item-li">
 								<img class="service-item-img" src="{{ asset(produit.imgProduit)}}" alt="photo {{ produit.titre }}">
 								<div class="service-item-info">

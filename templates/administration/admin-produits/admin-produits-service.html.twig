@@ -57,7 +57,7 @@
                         </ul>
                     </div>
 
-                    <a href="{{ path('admin_produit_ajouter')}}" class="admin-blue-btn">Ajouter un produit</a>
+                    <a href="{{ path('admin_produit_ajouter')}}" class="blue-btn">Ajouter un produit</a>
                 </div>
             </nav>
 
@@ -88,10 +88,10 @@
                             <td>{% if (produit.taxe * 100) matches '/^\\d+$/' %}{{ (produit.taxe * 100) }}{% else %}{{ (produit.taxe * 100) | number_format(2, ',', '')}}{% endif %}%</td>
                             <td>{{produit.prixUnitaire | number_format(2,',','')}} €</td>
                             <td><div class="admin-produit-ease-out">{% if produit.categorie == null %}{{produit.service}}{% else %}{{produit.categorie}}{% endif %}</div></td>
-                            <td><a href="{{ path('admin_produit_modify', {'id':produit.id}) }}" class="admin-yellow-btn">Modifier</a></td>
-                            <td><a href="{{ path('admin_produit_delete', {'id':produit.id}) }}" class="admin-red-btn" onclick="return confirm('Etes-vous sûre de vouloir supprimer?')">Supprimer</a></td> 
+                            <td><a href="{{ path('admin_produit_modify', {'id':produit.id}) }}" class="yellow-btn">Modifier</a></td>
+                            <td><a href="{{ path('admin_produit_delete', {'id':produit.id}) }}" class="red-btn" onclick="return confirm('Etes-vous sûre de vouloir supprimer?')">Supprimer</a></td> 
                             <td>
-                                <a href="{{ path('admin_produit_inverse', {'id':produit.id}) }}" class={% if produit.active == true %}"admin-green-btn"{% else %}"admin-black-btn"{% endif %}>
+                                <a href="{{ path('admin_produit_inverse', {'id':produit.id}) }}" class={% if produit.active == true %}"green-btn"{% else %}"black-btn"{% endif %}>
                                     {% if produit.active == true %}Activé{% else %}Désactivé{% endif %}
                                 </a>
                             </td> 
@@ -124,10 +124,10 @@
                             <td>{% if (produit.taxe * 100) matches '/^\\d+$/' %}{{ (produit.taxe * 100) }}{% else %}{{ (produit.taxe * 100) | number_format(2, ',', '')}}{% endif %}%</td>
                             <td>{{produit.prixUnitaire | number_format(2,',','')}} €</td>
                             <td><div class="admin-produit-ease-out">{% if produit.categorie == null %}{{produit.service}}{% else %}{{produit.categorie}}{% endif %}</div></td>
-                            <td><a href="{{ path('admin_produit_modify', {'id':produit.id}) }}" class="admin-yellow-btn">Modifier</a></td>
-                            <td><a href="{{ path('admin_produit_delete', {'id':produit.id}) }}" class="admin-red-btn" onclick="return confirm('Etes-vous sûre de vouloir supprimer?')">Supprimer</a></td> 
+                            <td><a href="{{ path('admin_produit_modify', {'id':produit.id}) }}" class="yellow-btn">Modifier</a></td>
+                            <td><a href="{{ path('admin_produit_delete', {'id':produit.id}) }}" class="red-btn" onclick="return confirm('Etes-vous sûre de vouloir supprimer?')">Supprimer</a></td> 
                             <td>
-                                <a href="{{ path('admin_produit_inverse', {'id':produit.id}) }}" class={% if produit.active == true %}"admin-green-btn"{% else %}"admin-black-btn"{% endif %}>
+                                <a href="{{ path('admin_produit_inverse', {'id':produit.id}) }}" class={% if produit.active == true %}"green-btn"{% else %}"black-btn"{% endif %}>
                                     {% if produit.active == true %}Activé{% else %}Désactivé{% endif %}
                                 </a>
                             </td> 

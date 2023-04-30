@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Double Authentification{% endblock %}
+
+{% block stylesheets %}
+	{{parent()}}
+	<link rel="stylesheet" href="{{ asset('dist/style/annexes/loginStyle.css') }}">
+{% endblock %}
+
+{% block body %}
+    {% block navBar %}{% endblock %}
+
+    <section class="reset-pass">
+
+        <h2>Double authentification</h2>
+
+        <div class="form-control">
+            <div class="row">
+                <form class="form" action="/2fa_check" method="post">
+                    <p class="widget">
+                        <label for="_auth_code">Code d'authentification: (envoyé dans votre mail)</label>
+                        <input id="_auth_code" class="form-control" type="text" name="_auth_code"autocomplete="one-time-code" autofocus />
+                    </p>
+
+                    <button class="submit btn btn-lg btn-success login-btn" type="submit">Login</button>
+                </form>
+            </div>
+
+            <a style="color:blue;display:block;text-align:center;" href="{{ path('app_logout') }}">Annuler</a>
+        </div>
+
+    </section>
+
+{% endblock %}

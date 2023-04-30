@@ -64,7 +64,7 @@
                             <td>{{commande.ttc | number_format(2,',','')}} €</td>
                             <td><a href="{{ path('facture_pdf', {'id':commande.id}) }}" target="_blank">Voir</a></td> 
                             <td>
-                                <a href="{{ path('changer_statut_commande', {'id':commande.id}) }}" class="admin-yellow-btn">Non récupérée</a>
+                                <a href="{{ path('changer_statut_commande', {'id':commande.id}) }}" class="yellow-btn">Non récupérée</a>
                                 <div class="admin-details-commande">
                                     {% if commande.dateRetrait is not null %}
                                         P: {{commande.dateRetrait | date("d/m/Y") }} - {{commande.tempsRetrait}}<br>
@@ -110,7 +110,7 @@
                             </td>
                             <td>{{commande.ttc | number_format(2,',','')}} €</td>
                             <td><a href="{{ path('facture_pdf', {'id':commande.id}) }}" target="_blank">Voir</a></td> 
-                            <td><a href="{{ path('changer_statut_commande', {'id':commande.id}) }}" class="admin-green-btn">Récupérée</a></td>
+                            <td><a href="{{ path('changer_statut_commande', {'id':commande.id}) }}" class="green-btn">Récupérée</a></td>
                         </tr>
 
                     {% endfor %}

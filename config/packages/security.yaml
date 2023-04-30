@@ -22,6 +22,10 @@ security:
                 # where to redirect after logout
                 target: app_home
 
+            two_factor:
+                auth_form_path: 2fa_login       # route for entering sent code (its in routes/scheb_2fa.yaml)
+                check_path: 2fa_login_check     # route for checking the code and authentify if good (its in routes/scheb_2fa.yaml)
+
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
 
@@ -37,6 +41,7 @@ security:
         - { path: '^/login', roles: PUBLIC_ACCESS, requires_channel: https }
         # catch all other URLs
         - { path: '^/', roles: PUBLIC_ACCESS, requires_channel: https }
+        - { path: ^/2fa, role: IS_AUTHENTICATED_2FA_IN_PROGRESS }
 
 when@test:
     security:

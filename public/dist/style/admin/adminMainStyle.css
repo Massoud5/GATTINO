@@ -77,37 +77,6 @@
     transition: max-height 1000ms ease-in;
 }
 
-.admin-green-btn{
-    color: var(--blanc) !important;
-    background-color: var(--vert);
-    padding: 3px;
-    border-radius: 3px;
-}
-.admin-red-btn{
-    color: var(--blanc) !important;
-    background-color: var(--rouge);
-    padding: 3px;
-    border-radius: 3px;
-}
-.admin-blue-btn{
-    color: var(--blanc) !important;
-    background-color: #006aff;
-    padding: 3px;
-    border-radius: 3px;
-}
-.admin-yellow-btn{
-    color: black !important;
-    background-color: #ffd900;
-    padding: 3px;
-    border-radius: 3px;
-}
-.admin-black-btn{
-    color: var(--blanc) !important;
-    background-color: black;
-    padding: 3px;
-    border-radius: 3px;
-}
-
 .admin-btn-ajouter{
     display: block;
     width: fit-content;

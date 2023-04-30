@@ -1,0 +1,14 @@
+# See the configuration reference at https://symfony.com/bundles/SchebTwoFactorBundle/6.x/configuration.html
+scheb_two_factor:
+
+    security_tokens:
+        - Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken
+        - Symfony\Component\Security\Http\Authenticator\Token\PostAuthenticationToken
+        
+    # Email authentication config
+    email:
+        digits: 6                               # Number of digits in authentication code
+        enabled: true                           # If email authentication should be enabled, default false
+        sender_email: no_reply@gattino.fr       # Sender email address
+        sender_name: GATTINO                    # Sender name
+        template: administration/security/2fa_form.html.twig # 2fa form

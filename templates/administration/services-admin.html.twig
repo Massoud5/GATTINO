@@ -37,7 +37,7 @@
 
             <table class="table table-hover admin-table">
 
-                <a href="{{ path('admin_services_ajouter')}}" class="admin-blue-btn admin-btn-ajouter">Ajouter un service</a>
+                <a href="{{ path('admin_services_ajouter')}}" class="blue-btn admin-btn-ajouter">Ajouter un service</a>
 
                 <thead>
                     <tr>
@@ -54,8 +54,8 @@
                             <td>{{service.titre}}</td>
                             <td>{{service.produits | length}}</td>
                             <td>{% if service.commandabilite == false %}Non{% else %}Oui{% endif %}</td> 
-                            <td><a href="{{ path('admin_service_modify', {'id':service.id}) }}" class="admin-yellow-btn">Modifier</a></td>
-                            <td><a href="{{ path('admin_service_delete', {'id':service.id}) }}" class="admin-red-btn" onclick="return confirm('Etes-vous sûre de vouloir supprimer?')">Supprimer</a></td>
+                            <td><a href="{{ path('admin_service_modify', {'id':service.id}) }}" class="yellow-btn">Modifier</a></td>
+                            <td><a href="{{ path('admin_service_delete', {'id':service.id}) }}" class="red-btn" onclick="return confirm('Etes-vous sûre de vouloir supprimer?')">Supprimer</a></td>
                         </tr>
 
                     {% endfor %}

@@ -28,7 +28,7 @@ const searchBarDisplay = document.querySelector('.search-results-box h3');
 
 if (searchIcon){
 
-    if(searchBarDisplay.textContent=== 'Résultat(s) de recherche: ""'){
+    if(searchBarDisplay.textContent=== 'Résultat de recherche: ""'){
         searchBox.style.display = "none";
     }
     

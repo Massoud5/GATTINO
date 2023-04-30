@@ -23,7 +23,8 @@ class SearchProduitType extends AbstractType
             ->add('rechercher', SubmitType::class, [
                 'label' => 'RECHERCHER',
                 'attr' => [
-                    'class' => 'btn btn-success admin-green-btn',
+                    'class' => 'btn btn-success green-btn',
+                    'id' => 'input-search-btn'
                 ],
             ])
         ;

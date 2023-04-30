@@ -61,3 +61,34 @@ h2{
     font-size: 55px;
     text-transform: uppercase;
 }
+
+.green-btn{
+    color: var(--blanc) !important;
+    background-color: var(--vert);
+    padding: 3px;
+    border-radius: 3px;
+}
+.red-btn{
+    color: var(--blanc) !important;
+    background-color: var(--rouge);
+    padding: 3px;
+    border-radius: 3px;
+}
+.blue-btn{
+    color: var(--blanc) !important;
+    background-color: #006aff;
+    padding: 3px;
+    border-radius: 3px;
+}
+.yellow-btn{
+    color: black !important;
+    background-color: #ffd900;
+    padding: 3px;
+    border-radius: 3px;
+}
+.black-btn{
+    color: var(--blanc) !important;
+    background-color: black;
+    padding: 3px;
+    border-radius: 3px;
+}

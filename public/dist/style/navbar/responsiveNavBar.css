@@ -105,14 +105,48 @@
         bottom: -5px;
     }
 
+    /* Search box responsive*/
     .search-bar-box{
         position: fixed;
         top: 0;
     }
-    .search-form-box .search-elements{
+    .search-form-box .search-elements-box{
         margin-top:50px;
     }
+    .search-elements {
+        flex-direction: column;
+        align-items: center;
+    }
     .search-bar-box .search-input{
-        width:250px;
+        min-width: 300px !important;
+    }
+    .search-bar-box .green-btn{
+        /* to remove margin-left */
+        margin: auto;
+        margin-top: 10px;
+        justify-self: center;
+        border-radius: 3px;
+    }
+    /* result search */
+    .search-results-box{
+        margin-top: 60px;
+    }
+    .result-produits-list > .item-li{
+        width: 250px;
+        height: 50px;
+    }
+    .result-produits-list > .item-li img {
+        width: 70px;
+    }
+
+    .result-produits-list > .item-li div {
+        padding-left: 0;
+    }
+    .result-produits-list > .item-li div h5 {
+        max-height: 20px;
+    }
+    .result-produits-list > .item-li div h5,
+    .result-produits-list > .item-li div span {
+        font-size: 15px;
     }
 }
