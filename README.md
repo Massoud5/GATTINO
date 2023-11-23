@@ -33,15 +33,11 @@ GATIINO Grocery is an intuitive click-and-collect web application developed with
 
 ### Prerequisites
 
-List the prerequisites for setting up your project. For example:
-
 - PHP version 8.1
 - Composer
 - Symfony 6.3
 
 ### Installation
-
-Provide step-by-step instructions on setting up the project environment. For example:
 
 1. Clone the repository: `git clone git@github.com:Massoud5/GATTINO.git`
 2. Navigate to the project directory: `cd GATTINO`
@@ -50,16 +46,12 @@ Provide step-by-step instructions on setting up the project environment. For exa
 
 ### Running the Application
 
-Explain how to start the application. For example:
-
 1. install [symfony-CLI](https://symfony.com/download) in your system
 2. Start the server: `symfony server:start`
-3. Access the application at `http://localhost:8000`
+3. Access the application at `https://localhost:8000`
 
 
 ## Contributing
-
-Provide guidelines for how others can contribute to the project. For example:
 
 - Fork the repository
 - Create a feature branch: `git checkout -b new-feature`
